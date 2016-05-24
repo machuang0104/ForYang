@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/space_small"
+    android:paddingLeft="@dimen/space_larger"
+    android:paddingRight="@dimen/space_larger"
+    android:paddingTop="@dimen/space_small" >
+
+    <TextView
+        android:id="@+id/record_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/half_corner_top_white"
+        android:ellipsize="marquee"
+        android:gravity="left|center_vertical"
+        android:text="@string/app_name"
+        android:textSize="@dimen/size_nomal" />
+
+    <TextView
+        android:id="@+id/record_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="right"
+        android:text="@string/app_name"
+        android:textSize="@dimen/size_small" />
+
+</LinearLayout>

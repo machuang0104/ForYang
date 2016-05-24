@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ma.text.widget.listview.XListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listView"
+    style="@style/listview"
+    android:clickable="true"
+    android:paddingLeft="@dimen/space_larger"
+    android:paddingRight="@dimen/space_larger"
+    android:scrollbars="none" />

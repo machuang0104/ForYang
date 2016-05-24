@@ -1,0 +1,54 @@
+<resources>
+
+    <dimen name="size_title">@dimen/textsize_20</dimen>
+    <dimen name="size_nomal">@dimen/textsize_17</dimen>
+    <dimen name="size_small">@dimen/textsize_14</dimen>
+    <dimen name="size_smalls">@dimen/textsize_12</dimen>
+    <dimen name="space_title">@dimen/dimen_15</dimen>
+    <dimen name="space_larger">@dimen/dimen_15</dimen>
+    <dimen name="space_normal">@dimen/dimen_10</dimen>
+    <dimen name="space_small">@dimen/dimen_5</dimen>
+    <dimen name="space_smalls">@dimen/dimen_3</dimen>
+    <dimen name="dimen_line">1px</dimen>
+    <dimen name="dimen_line_shape">0.5dp</dimen>
+    <dimen name="dimen_divider">6dp</dimen>
+    <dimen name="dimen_corner">6dp</dimen>
+    <dimen name="dimen_map_icon">@dimen/dimen_30</dimen>
+    <dimen name="dimen_corner_btn">5dp</dimen>
+    <dimen name="dimen_progress_circle">40dp</dimen>
+    <dimen name="dimen_progress_circle_new">55dp</dimen>
+    <dimen name="layout_titile_height">@dimen/dimen_50</dimen>
+    <dimen name="layout_padding">@dimen/dimen_10</dimen>
+
+    <!-- image大小 -->
+    <dimen name="image_width3">@dimen/dimen_30</dimen>
+    <dimen name="image_width5">@dimen/dimen_50</dimen>
+
+    <!-- listview统一样式 -->
+    <dimen name="lv_height">100dp</dimen>
+    <dimen name="lv_dividerheight">0.1dp</dimen>
+    <dimen name="lv_padding">@dimen/dimen_5</dimen>
+    <dimen name="lv_paddinglest">@dimen/dimen_5</dimen>
+    <dimen name="lv_paddingright">@dimen/dimen_5</dimen>
+    <dimen name="lv_paddingtop">@dimen/dimen_5</dimen>
+    <dimen name="lv_paddingbottom">@dimen/dimen_5</dimen>
+
+    <!-- item goods picture 大小 -->
+    <dimen name="item_list_goods_width">@dimen/dimen_80</dimen>
+    <dimen name="item_list_goods_height">@dimen/dimen_80</dimen>
+    <dimen name="item_grid_goods_width">140dp</dimen>
+    <dimen name="item_grid_goods_height">140dp</dimen>
+    <dimen name="layout_sort_height">@dimen/dimen_40</dimen>
+
+    <!-- 侧滑 -->
+    <dimen name="slidingmenu_offset">@dimen/dimen_60</dimen>
+    <dimen name="list_padding">@dimen/dimen_10</dimen>
+    <dimen name="shadow_width">@dimen/dimen_15</dimen>
+    <dimen name="ui_10_dip">@dimen/dimen_10</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="indicator_right_padding">10dp</dimen>
+
+</resources>

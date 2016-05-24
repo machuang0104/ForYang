@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 默认状态圆角白色，无边框，点击时为圆角灰色 -->
+    <item android:drawable="@drawable/shape_bg_gray" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/shape_bg_gray" android:state_focused="true"></item>
+    <item android:drawable="@drawable/shape_white_bg_noline"></item>
+
+</selector>

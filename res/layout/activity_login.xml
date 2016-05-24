@@ -1,0 +1,100 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/linearlayout_root" >
+
+
+    <ImageView
+        android:id="@+id/login_icon"
+        style="@style/imageview_common"
+        android:layout_above="@+id/login_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="@dimen/space_larger"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/login_title"
+        style="@style/textview_common"
+        android:layout_above="@+id/etLoginAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:text="@string/app_name"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/etLoginAccount"
+        style="@style/padding"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/etLoginPwd"
+        android:layout_alignLeft="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
+        android:background="@drawable/shape_bg_white_line_gray"
+        android:drawableLeft="@drawable/icon_account"
+        android:drawablePadding="@dimen/space_normal"
+        android:gravity="center_vertical"
+        android:hint="@string/login_hint_account"
+        android:inputType="textPassword"
+        android:maxLength="6"
+        android:paddingLeft="@dimen/space_normal"
+        android:paddingRight="@dimen/space_larger"
+        android:singleLine="true"
+        android:textSize="@dimen/size_nomal" >
+    </EditText>
+
+    <ImageView
+        android:id="@+id/clear_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etLoginAccount"
+        android:layout_alignRight="@+id/etLoginAccount"
+        android:layout_alignTop="@+id/etLoginAccount"
+        android:padding="@dimen/space_small"
+        android:src="@drawable/icon_delete_edit"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/etLoginPwd"
+        style="@style/padding"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dimen_40"
+        android:layout_marginRight="@dimen/dimen_40"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@drawable/shape_bg_white_line_gray"
+        android:drawableLeft="@drawable/icon_code"
+        android:drawablePadding="@dimen/space_normal"
+        android:gravity="center_vertical"
+        android:hint="@string/login_hint_pwd"
+        android:inputType="textPassword"
+        android:paddingLeft="@dimen/space_normal"
+        android:singleLine="true"
+        android:visibility="invisible"
+        android:textSize="@dimen/size_nomal" >
+    </EditText>
+
+    <ImageView
+        android:id="@+id/clear_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
+        android:layout_alignTop="@+id/etLoginPwd"
+        android:padding="@dimen/space_small"
+        android:src="@drawable/icon_delete_edit"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
+        android:layout_below="@+id/etLoginPwd"
+        android:layout_marginTop="@dimen/space_larger"
+        android:background="@drawable/bgs_theme_deeper"
+        android:gravity="center"
+        android:padding="@dimen/space_normal"
+        android:text="@string/key_login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_nomal" />
+
+</RelativeLayout>

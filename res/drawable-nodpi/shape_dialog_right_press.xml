@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <!-- 填充的颜色 -->
+    <solid android:color="@color/dialog_bg_press" />
+    <!-- 设置按钮的左上角和右上角为圆形边框 -->
+    <corners android:bottomRightRadius="@dimen/dimen_corner" />
+
+</shape>

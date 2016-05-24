@@ -1,0 +1,25 @@
+<com.ma.text.view.menu.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.ma.text"
+    android:id="@+id/sliding_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:fadingEdge="none"
+    android:background="@drawable/bg_main"
+    app:rightPadding="@dimen/dimen_menu" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <include layout="@layout/layout_menu" />
+
+        <LinearLayout
+            android:id="@+id/fragment_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+
+</com.ma.text.view.menu.SlidingMenu>
