@@ -1,6 +1,9 @@
 package com.ma.text.module;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -29,6 +32,10 @@ import com.ma.text.view.menu.SlidingMenu;
 import com.ma.text.view.menu.SlidingMenu.OpenStatusListener;
 import com.ma.text.vo.db.TypeVo;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -234,14 +241,16 @@ public class MainActivity extends BaseActivity {
 		@Override
 		public void onLocationChanged(AMapLocation loc) {
 			String city = loc.getCity();
+			Log.i("machuang", "loc = " + loc.getLatitude() + " city = " + loc.getCity());
 			if (!TextUtils.isEmpty(city)) {
 				if (city.contains("市")) {
-					city.replace("市", "");
+					city = city.replace("市", "");
 				} else if (city.contains("县")) {
-					city.replace("县", "");
+					city = city.replace("县", "");
 				}
-				UserCache.saveCity(loc.getCity());
+				UserCache.saveCity(city);
 			}
+			sHA1(MainActivity.this);
 			getWeather();
 			client.stopLocation();
 		}
@@ -255,7 +264,6 @@ public class MainActivity extends BaseActivity {
 		option.setLocationMode(AMapLocationMode.Hight_Accuracy);
 		option.setOnceLocation(true);
 		option.setMockEnable(false);
-		option.setGpsFirst(true);
 		option.setNeedAddress(true);
 		option.setInterval(1000);
 		client.setLocationListener(mLocListener);
@@ -273,30 +281,27 @@ public class MainActivity extends BaseActivity {
 		}
 	}
 
-	// public static String sHA1(Context context) {
-	// try {
-	// PackageInfo info =
-	// context.getPackageManager().getPackageInfo(context.getPackageName(),
-	// PackageManager.GET_SIGNATURES);
-	// byte[] cert = info.signatures[0].toByteArray();
-	// MessageDigest md = MessageDigest.getInstance("SHA1");
-	// byte[] publicKey = md.digest(cert);
-	// StringBuffer hexString = new StringBuffer();
-	// for (int i = 0; i < publicKey.length; i++) {
-	// String appendString = Integer.toHexString(0xFF &
-	// publicKey[i]).toUpperCase(Locale.US);
-	// if (appendString.length() == 1)
-	// hexString.append("0");
-	// hexString.append(appendString);
-	// Log.d("machuang", " result = " + hexString);
-	// }
-	// Log.d("machuang", " result = " + hexString);
-	// return hexString.toString();
-	// } catch (NameNotFoundException e) {
-	// e.printStackTrace();
-	// } catch (NoSuchAlgorithmException e) {
-	// e.printStackTrace();
-	// }
-	// return null;
-	// }
+	public static String sHA1(Context context) {
+		try {
+			PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(),
+					PackageManager.GET_SIGNATURES);
+			byte[] cert = info.signatures[0].toByteArray();
+			MessageDigest md = MessageDigest.getInstance("SHA1");
+			byte[] publicKey = md.digest(cert);
+			StringBuffer hexString = new StringBuffer();
+			for (int i = 0; i < publicKey.length; i++) {
+				String appendString = Integer.toHexString(0xFF & publicKey[i]).toUpperCase(Locale.US);
+				if (appendString.length() == 1)
+					hexString.append("0");
+				hexString.append(appendString);
+			}
+			Log.d("machuang", " SHA1 = " + hexString);
+			return hexString.toString();
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

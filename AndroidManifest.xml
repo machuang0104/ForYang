@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ma.text"
     android:versionCode="2"
-    android:versionName="1.0.1" >
+    android:versionName="2.0.1" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="16"
         android:targetSdkVersion="21" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -47,10 +47,6 @@
             android:value="ee6860049dee4386b66542bb16e1e53b" />
 
         <service android:name="com.amap.api.location.APSService" />
-        <!--
-         debug_home-ee6860049dee4386b66542bb16e1e53b 
-        Release-ae2039325739353558e87e0b7fb4dd64
-        -->
         <!-- 高德end -->
         <activity
             android:name="com.ma.text.module.WelcomeActivity"
