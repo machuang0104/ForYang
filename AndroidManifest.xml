@@ -11,7 +11,6 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <!-- 使用导航功能所需权限 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -24,19 +23,11 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
-    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- Required  一些系统要求的权限，如访问网络等 -->
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <!-- Optional for location -->
@@ -50,7 +41,13 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme" >
-        <uses-library android:name="android.test.runner" />
+        <!-- 高德start -->
+         <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="b098c084d7101d5e7aa3f24f1071efb0" />
+
+        <service android:name="com.amap.api.location.APSService" />
+        <!-- 高德end -->
         <!-- 欢迎页面 -->
         <!-- android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" -->
         <activity
@@ -70,15 +67,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.ma.text.module.LoginActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.ma.text.module.EditActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <!-- ###################注册SDK使用的Activity###################### -->
-        <!-- jpush start -->
-
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.ma.text.test.TestActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

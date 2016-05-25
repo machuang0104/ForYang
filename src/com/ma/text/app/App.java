@@ -20,7 +20,7 @@ import android.util.SparseArray;
 
 import com.ma.text.common.K;
 import com.ma.text.db.SQLiteDatabasePool;
-import com.ma.text.http.MHandler;
+import com.ma.text.httpclient.http.MHandler;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
 import com.ma.text.tools.NetUtils;

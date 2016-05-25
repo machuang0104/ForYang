@@ -14,16 +14,24 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.lidroid.xutils.exception.HttpException;
 import com.ma.text.R;
 import com.ma.text.adapter.ViewHolders;
 import com.ma.text.anno.view.InjectLayout;
 import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.cache.UserCache;
 import com.ma.text.compoment.dialoginput.DialogInputClient;
 import com.ma.text.compoment.dialoginput.InputListener;
 import com.ma.text.db.client.manager.TypeManager;
 import com.ma.text.fragment.MainFragment;
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.httpclient.action.Task;
+import com.ma.text.httpclient.http.MCallBack;
+import com.ma.text.httpclient.http.Response;
+import com.ma.text.module.weather.vo.WeatherDataVo;
+import com.ma.text.module.weather.vo.WeatherForecastVo;
+import com.ma.text.module.weather.vo.WeatherStatusVo;
+import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.view.menu.SlidingMenu;
 import com.ma.text.view.menu.SlidingMenu.OpenStatusListener;
 import com.ma.text.vo.db.TypeVo;
@@ -34,6 +42,10 @@ public class MainActivity extends BaseActivity {
 	private SlidingMenu mMenu;
 	@InjectView(id = R.id.typeList)
 	ListView typeList;
+	@InjectView(id = R.id.menu_weather_city)
+	TextView city;
+	@InjectView(id = R.id.menu_weather)
+	TextView weather;
 
 	ArrayList<TypeVo> dataList = new ArrayList<TypeVo>();
 
@@ -69,6 +81,50 @@ public class MainActivity extends BaseActivity {
 						dataList.get(position).getType_id());
 			}
 		});
+		getWeather();
+	}
+
+	private void getWeather() {
+		String cityName = "苏州";
+		if (TextUtils.isEmpty(UserCache.getCity())) {
+			cityName = UserCache.getCity();
+		}
+		Task.getInstance().getWeather(cityName,
+				new MCallBack<WeatherStatusVo>() {
+
+					@Override
+					public void onSuccess(Response<WeatherStatusVo> res) {
+						if (res.getData().getDesc().equals("OK")) {
+							try {
+								showWeather(res.getData().getData());
+							} catch (Exception e) {
+								ToastUtil.show(R.string.weather_fail);
+							}
+						} else {
+							ToastUtil.show(R.string.weather_fail);
+						}
+					}
+
+					@Override
+					public void onFailure(HttpException e, String msg) {
+						ToastUtil.show(R.string.weather_fail);
+					}
+				});
+	}
+
+	private void showWeather(WeatherDataVo wea) {
+		ArrayList<WeatherForecastVo> list = wea.getForecast();
+		StringBuffer w = new StringBuffer("\n");
+		if (list != null && list.size() > 0) {
+			WeatherForecastVo fo = list.get(0);
+			w.append(fo.getHigh()).append(" - ").append(fo.getLow())
+					.append("\n").append(fo.getFengxiang()).append(" - ")
+					.append(fo.getFengli()).append("\n").append(fo.getType())
+					.append("\n");
+			city.setText(wea.getCity() + " - " + fo.getDate());
+		}
+		w.append(wea.getGanmao());
+		weather.setText(w.toString());
 	}
 
 	private boolean firstOpen = true;
@@ -104,7 +160,7 @@ public class MainActivity extends BaseActivity {
 				});
 				break;
 			case R.id.set:
-				ToastUtils.show(R.string.tip_building);
+				ToastUtil.show(R.string.tip_building);
 				break;
 			default:
 				break;
@@ -133,7 +189,7 @@ public class MainActivity extends BaseActivity {
 				System.exit(0);
 			} else {
 				firstTime = System.currentTimeMillis();
-				ToastUtils.show(R.string.tip_exit);
+				ToastUtil.show(R.string.tip_exit);
 			}
 		}
 		return true;

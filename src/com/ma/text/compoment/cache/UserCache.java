@@ -11,4 +11,12 @@ public class UserCache {
 		ShareUtil.saveString("d_pwd", pwd);
 	}
 
+	public static void saveCity(String city) {
+		ShareUtil.saveString("city", city);
+	}
+
+	public static String getCity() {
+		return ShareUtil.getString("city");
+	}
+
 }

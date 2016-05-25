@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.tools.tip.ToastUtil;
 
 
 import android.app.Activity;
@@ -57,7 +57,7 @@ public class ExitApplication {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if (isQuit == false) {
 				isQuit = true;
-				ToastUtils.show(message);
+				ToastUtil.show(message);
 				TimerTask task = new TimerTask() {
 
 					@Override

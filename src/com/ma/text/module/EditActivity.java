@@ -11,7 +11,7 @@ import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.db.client.manager.ContentManager;
 import com.ma.text.tools.cache.ShareUtil;
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.vo.db.ContentVo;
 
 @InjectLayout(id = R.layout.activity_edit)
@@ -50,7 +50,7 @@ public class EditActivity extends BaseActivity {
 				c.setCreatetime(System.currentTimeMillis());
 				c.setType_id(typeId);
 				ContentManager.getInstance().insertUpdate(c);
-				ToastUtils.show(R.string.save_sucess);
+				ToastUtil.show(R.string.save_sucess);
 				ShareUtil.saveInt("have", -2);
 				finish();
 			}
