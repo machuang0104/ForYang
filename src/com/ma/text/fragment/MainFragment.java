@@ -4,6 +4,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.ma.text.R;
+import com.ma.text.adapter.ViewHolders;
+import com.ma.text.compoment.cache.SharedUtil;
+import com.ma.text.db.client.manager.ContentManager;
+import com.ma.text.db.client.manager.TypeManager;
+import com.ma.text.module.EditActivity;
+import com.ma.text.view.menu.SlidingMenu;
+import com.ma.text.vo.db.ContentVo;
+import com.ma.text.vo.db.TypeVo;
+import com.ma.text.widget.listview.XListView;
+import com.ma.text.widget.listview.XListView.IXListViewListener;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,18 +26,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.ma.text.R;
-import com.ma.text.adapter.ViewHolders;
-import com.ma.text.db.client.manager.ContentManager;
-import com.ma.text.db.client.manager.TypeManager;
-import com.ma.text.module.EditActivity;
-import com.ma.text.tools.cache.ShareUtil;
-import com.ma.text.view.menu.SlidingMenu;
-import com.ma.text.vo.db.ContentVo;
-import com.ma.text.vo.db.TypeVo;
-import com.ma.text.widget.listview.XListView;
-import com.ma.text.widget.listview.XListView.IXListViewListener;
 
 public class MainFragment extends BaseFragment {
 
@@ -206,9 +206,9 @@ public class MainFragment extends BaseFragment {
 		if (isFirst) {
 			isFirst = false;
 		} else {
-			if (ShareUtil.getInt("have") == -2) {
+			if (SharedUtil.getInt("have") == -2) {
 				refreshList();
-				ShareUtil.clear("have");
+				SharedUtil.clear("have");
 			}
 		}
 

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@android:color/black"
         android:paddingLeft="@dimen/space_larger"
         android:paddingRight="@dimen/space_larger" >
 
@@ -23,7 +23,7 @@
             android:gravity="center"
             android:padding="@dimen/space_small"
             android:text="@string/type_default"
-            android:textColor="@color/white"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/size_title" />
 
         <ImageView
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/main_title"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/main_title"
             android:layout_centerVertical="true"
             android:contentDescription="@string/app_name"
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/main_title"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/main_title"
             android:layout_centerVertical="true"
             android:contentDescription="@string/app_name"
@@ -63,7 +63,7 @@
         android:gravity="center"
         android:padding="@dimen/space_small"
         android:text="@string/app_name"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/size_nomal"
         android:visibility="invisible" />
 

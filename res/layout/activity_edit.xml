@@ -12,7 +12,8 @@
         android:layout_marginTop="@dimen/space_larger"
         android:background="@drawable/shape_bg_white_line_gray"
         android:hint="@string/hint_title"
-        android:paddingLeft="@dimen/space_normal"
+        android:paddingStart="@dimen/space_normal"
+        android:paddingEnd="@dimen/space_normal"
         android:singleLine="false"
         android:textSize="@dimen/size_nomal" >
     </EditText>
@@ -23,16 +24,18 @@
         android:layout_width="match_parent"
         android:layout_above="@+id/save"
         android:layout_below="@+id/input_title"
-        android:layout_marginLeft="@dimen/space_normal"
-        android:layout_marginRight="@dimen/space_larger"
+        android:layout_marginEnd="@dimen/space_larger"
+        android:layout_marginStart="@dimen/space_normal"
         android:layout_marginTop="@dimen/space_normal"
         android:background="@drawable/shape_bg_white_line_gray"
-        android:gravity="left|top"
+        android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:paddingLeft="@dimen/space_normal"
-        android:paddingRight="@dimen/space_larger"
+        android:paddingEnd="@dimen/space_larger"
+        android:paddingStart="@dimen/space_normal"
         android:singleLine="false"
-        android:textSize="@dimen/size_nomal" >
+        android:textSize="@dimen/size_nomal"
+        tools:ignore="LabelFor" >
+
     </EditText>
 
     <TextView
@@ -48,7 +51,7 @@
         android:gravity="center"
         android:padding="@dimen/space_normal"
         android:text="@string/key_save"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/size_nomal" />
 
 </RelativeLayout>

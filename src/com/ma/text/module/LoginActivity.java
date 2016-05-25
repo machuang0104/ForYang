@@ -31,7 +31,6 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	protected void afterOnCreate() {
-		findViewById(R.id.title_left).setVisibility(View.INVISIBLE);
 		btn_login.setOnClickListener(mListener);
 	}
 

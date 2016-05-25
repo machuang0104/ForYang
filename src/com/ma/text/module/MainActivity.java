@@ -42,8 +42,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void afterOnCreate() {
 		mainFragment = new MainFragment(mMenu);
-		getSupportFragmentManager().beginTransaction()
-				.add(R.id.fragment_root, mainFragment).commit();
+		getSupportFragmentManager().beginTransaction().add(R.id.fragment_root, mainFragment).commit();
 		findViewById(R.id.add_type).setOnClickListener(menuListener);
 		findViewById(R.id.set).setOnClickListener(menuListener);
 		typeList.setAdapter(mAdappter);
@@ -62,11 +61,9 @@ public class MainActivity extends BaseActivity {
 		});
 		typeList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				mMenu.closeMenu();
-				mainFragment.onTypeChange(dataList.get(position).getTitle(),
-						dataList.get(position).getType_id());
+				mainFragment.onTypeChange(dataList.get(position).getTitle(), dataList.get(position).getType_id());
 			}
 		});
 	}
@@ -104,7 +101,7 @@ public class MainActivity extends BaseActivity {
 				});
 				break;
 			case R.id.set:
-				ToastUtils.show(R.string.tip_building);
+				doActivity(SettingActivity.class);
 				break;
 			default:
 				break;
@@ -165,8 +162,7 @@ public class MainActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View v, ViewGroup parent) {
 			if (v == null) {
-				v = LayoutInflater.from(MainActivity.this).inflate(
-						R.layout.item_type, parent, false);
+				v = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_type, parent, false);
 			}
 			TextView typeTxt = ViewHolders.get(v, R.id.type_title);
 			typeTxt.setText(dataList.get(position).getTitle());

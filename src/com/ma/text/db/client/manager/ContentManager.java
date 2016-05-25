@@ -37,13 +37,16 @@ public class ContentManager {
 		mTestDao.insertUpdate(v);
 	}
 
+	public void delete(int id) {
+		mTestDao.delete("_id = " + id);
+	}
+
 	/**
 	 * 执行特定的sql1
 	 * 
 	 */
 	public void setBoxStatus(int id, int status, int isOpen, int isEmpty) {
-		String sql = "update table_box set _status = " + status
-				+ ", _is_open = " + isOpen + ", _is_empty = " + isEmpty
+		String sql = "update table_box set _status = " + status + ", _is_open = " + isOpen + ", _is_empty = " + isEmpty
 				+ " where _id = " + id;
 		mTestDao.execute(sql);
 	}

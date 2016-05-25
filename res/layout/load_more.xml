@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:background="@drawable/pullup_icon_big" />
 
         <ImageView
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:background="@drawable/upanddownreresh"
             android:visibility="gone" />
 
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/pullup_to_load"
-            android:textColor="@color/black"
+            android:textColor="@android:color/black"
             android:textSize="@dimen/size_small" />
 
         <ImageView
@@ -44,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
-            android:layout_toLeftOf="@id/loadstate_tv"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/loadstate_tv"
             android:visibility="gone" />
     </RelativeLayout>
 

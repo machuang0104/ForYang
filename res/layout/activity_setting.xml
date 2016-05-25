@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/linearlayout_root" >
+
+    <include layout="@layout/layout_title" />
+
+    <TextView
+        android:id="@+id/set_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_larger"
+        android:background="@drawable/selector_white_gray"
+        android:drawableEnd="@drawable/menu_arrow_right"
+        android:gravity="start|center_vertical"
+        android:padding="@dimen/space_normal"
+        android:text="@string/setting_add_pwd"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/size_nomal" />
+
+</LinearLayout>

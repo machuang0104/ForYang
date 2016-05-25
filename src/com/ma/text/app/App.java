@@ -10,6 +10,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.ma.text.common.K;
+import com.ma.text.compoment.cache.UserCache;
+import com.ma.text.db.SQLiteDatabasePool;
+import com.ma.text.http.MHandler;
+import com.ma.text.tools.ExitApplication;
+import com.ma.text.tools.LogUtil;
+import com.ma.text.tools.NetUtils;
+
 import android.app.Application;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -17,14 +25,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.util.SparseArray;
-
-import com.ma.text.common.K;
-import com.ma.text.db.SQLiteDatabasePool;
-import com.ma.text.http.MHandler;
-import com.ma.text.tools.ExitApplication;
-import com.ma.text.tools.LogUtil;
-import com.ma.text.tools.NetUtils;
-import com.ma.text.tools.cache.SetCache;
 
 /**
  * Application
@@ -88,7 +88,7 @@ public class App extends Application {
 		try {
 			PackageInfo info = pm.getPackageInfo(this.getPackageName(), 0);
 			if (info != null)
-				SetCache.saveVersion(info.versionName + "_" + info.versionCode);
+				UserCache.saveVersion(info.versionName + "_" + info.versionCode);
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}

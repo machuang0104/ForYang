@@ -12,25 +12,15 @@
     <string name="tip_building">暂未开放</string>
     <string name="save_sucess">保存成功</string>
     <string name="tip_input_type">输入分类名称</string>
-    <!--  -->
-    <string name="time">时间段</string>
-    <string name="lotleft">车位数</string>
-    <string name="order_num">预定数</string>
-    <string name="time_desc">备注</string>
-    <string name="time_work">工作日</string>
-    <string name="time_week">周末</string>
-    <string name="time_date">节假日</string>
-    <string name="scan_record">扫描记录</string>
-    <string name="scan_result">扫描结果</string>
-    <string name="scan_fail">扫描失败：</string>
-    <string name="scan_sucess_enter">扫描订单成功，可以进场</string>
-    <string name="scan_sucess_exit">扫描订单成功，可以离场</string>
-    <string name="scan_order_over">订单已结束</string>
-    <string name="key_enter">进场记录</string>
-    <string name="key_exit">离场记录</string>
-    <string name="key_scan_time">扫码时间：</string>
-    <string name="key_plate">车牌号：</string>
-    <string name="key_phone">手机号：</string>
+    <string name="login_hint_pwd">输入密码</string>
+    <string name="hint_title">标题</string>
+    <string name="setting_add_pwd">设置密码</string>
+    <string name="setting_add_pwd_sucess">设置成功</string>
+    <string name="setting_add_pwd_fail">两次密码不一致</string>
+    <string name="key_save">保&#160;&#160;存</string>
+    <string name="key_login">进&#160;&#160;入</string>
+    <string name="key_delete">删&#160;&#160;除</string>
+    <string name="tip_delete">确认删除？</string>
     <!--  -->
     <string name="xlistview_header_hint_normal">下拉刷新</string>
     <string name="xlistview_header_hint_loading">正在刷新&#8230;</string>
@@ -49,19 +39,7 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
     <!--  -->
-    <string name="login_hint_account">输入密码</string>
-    <string name="login_hint_pwd">请输入管理员密码</string>
-    <string name="hint_title">标题</string>
-    <!--  -->
-    <!-- activity about -->
-    <string name="about_cha_pub_num">微信公众号</string>
-    <string name="about_weburl">Copyright&#160;©&#160;2015&#160;ZhouFeng&#160;Tech.&#160;All&#160;rights&#160;reserved.</string>
-    <string name="about_phone">客服电话：400&#8211;008&#8211;2332</string>
-    <string name="about_copyright">骤风信息科技(上海)有限公司</string>
-    <!-- activity detail line -->
     <!-- 登陆注册 -->
-    <string name="key_save">保&#160;&#160;存</string>
-    <string name="key_login">进&#160;&#160;&#160;&#160;入</string>
     <string name="login_sucess">登录成功</string>
     <string name="login_fail">登录失败，身份信息为空</string>
     <string name="login_out_tip">退出登录将清除记录扫描的订单信息，确认退出？</string>

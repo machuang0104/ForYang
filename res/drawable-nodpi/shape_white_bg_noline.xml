@@ -5,5 +5,5 @@
     <!-- 角度 -->
     <corners android:radius="@dimen/dimen_corner" />
     <!-- 填充色 -->
-    <solid android:color="@color/white" />
+    <solid android:color="@android:color/white" />
 </shape>

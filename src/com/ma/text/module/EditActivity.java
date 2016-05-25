@@ -1,18 +1,19 @@
 package com.ma.text.module;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.ma.text.R;
 import com.ma.text.anno.view.InjectLayout;
 import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.cache.SharedUtil;
+import com.ma.text.compoment.dialog.DialogClient;
 import com.ma.text.db.client.manager.ContentManager;
-import com.ma.text.tools.cache.ShareUtil;
 import com.ma.text.tools.tip.ToastUtils;
 import com.ma.text.vo.db.ContentVo;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
 
 @InjectLayout(id = R.layout.activity_edit)
 public class EditActivity extends BaseActivity {
@@ -25,19 +26,31 @@ public class EditActivity extends BaseActivity {
 	@InjectView(id = R.id.save)
 	TextView save;
 
-	int typeId = 0;
+	int typeId = -1;
 
 	@Override
 	protected void afterOnCreate() {
 		int tag = getIntent().getIntExtra("tag", -1);
 		if (tag == 1) {
-			ContentVo v = (ContentVo) getIntent().getSerializableExtra("data");
-			title.setText(v.getTitle());
-			content.setText(v.getContent());
+			final ContentVo vo = (ContentVo) getIntent().getSerializableExtra("data");
+			title.setText(vo.getTitle());
+			content.setText(vo.getContent());
 			title.setClickable(false);
 			title.setFocusableInTouchMode(false);
 			content.setFocusableInTouchMode(false);
-			save.setVisibility(View.GONE);
+			save.setText(R.string.key_delete);
+			save.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					DialogClient.showTwo(EditActivity.this, getString(R.string.tip_delete), new OnClickListener() {
+
+						@Override
+						public void onClick(View v) {
+							ContentManager.getInstance().delete(vo.getId());
+						}
+					});
+				}
+			});
 			return;
 		}
 		typeId = getIntent().getIntExtra("typeid", 0);
@@ -51,7 +64,7 @@ public class EditActivity extends BaseActivity {
 				c.setType_id(typeId);
 				ContentManager.getInstance().insertUpdate(c);
 				ToastUtils.show(R.string.save_sucess);
-				ShareUtil.saveInt("have", -2);
+				SharedUtil.saveInt("have", -2);
 				finish();
 			}
 		});

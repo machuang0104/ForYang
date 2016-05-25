@@ -1,14 +1,23 @@
 package com.ma.text.compoment.cache;
 
-import com.ma.text.tools.cache.ShareUtil;
-
 public class UserCache {
 	public static String getPWD() {
-		return ShareUtil.getString("d_pwd");
+		return SharedUtil.getString("d_pwd");
 	}
 
 	public static void savePWD(String pwd) {
-		ShareUtil.saveString("d_pwd", pwd);
+		SharedUtil.saveString("d_pwd", pwd);
 	}
 
+	public static void saveVersion(String version) {
+		SharedUtil.saveString("app_version", version);
+	}
+
+	public static String getVersion() {
+		String ver = SharedUtil.getString("app_version1");
+		if (ver.equals("")) {
+			return "1.0.0_1";
+		} else
+			return ver;
+	}
 }
