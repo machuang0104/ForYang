@@ -15,65 +15,86 @@
 
 package com.lidroid.xutils.exception;
 
+import org.apache.http.HttpResponse;
+
+import com.lidroid.xutils.http.ResponseInfo;
+
 public class HttpException extends BaseException {
-    private static final long serialVersionUID = 1L;
+	private ResponseInfo<?> responseInfo;
+	private HttpResponse httpResponse;
+	private static final long serialVersionUID = 1L;
+	private int exceptionCode;
 
-    private int exceptionCode;
+	private int actionId;
 
-    public HttpException() {
-    }
+	public void setActionId(int actionId) {
+		this.actionId = actionId;
+	}
 
-    public HttpException(String detailMessage) {
-        super(detailMessage);
-    }
+	public int getActionId() {
+		return actionId;
+	}
 
-    public HttpException(String detailMessage, Throwable throwable) {
-        super(detailMessage, throwable);
-    }
+	public HttpException() {
+	}
 
-    public HttpException(Throwable throwable) {
-        super(throwable);
-    }
+	public HttpException(String detailMessage) {
+		super(detailMessage);
+	}
 
-    /**
-     * @param exceptionCode The http response status code, 0 if the http request error and has no response.
-     */
-    public HttpException(int exceptionCode) {
-        this.exceptionCode = exceptionCode;
-    }
+	public HttpException(String detailMessage, Throwable throwable) {
+		super(detailMessage, throwable);
+	}
 
-    /**
-     * @param exceptionCode The http response status code, 0 if the http request error and has no response.
-     * @param detailMessage
-     */
-    public HttpException(int exceptionCode, String detailMessage) {
-        super(detailMessage);
-        this.exceptionCode = exceptionCode;
-    }
+	public HttpException(Throwable throwable) {
+		super(throwable);
+	}
 
-    /**
-     * @param exceptionCode The http response status code, 0 if the http request error and has no response.
-     * @param detailMessage
-     * @param throwable
-     */
-    public HttpException(int exceptionCode, String detailMessage, Throwable throwable) {
-        super(detailMessage, throwable);
-        this.exceptionCode = exceptionCode;
-    }
+	public HttpException(int exceptionCode) {
+		this.exceptionCode = exceptionCode;
+	}
 
-    /**
-     * @param exceptionCode The http response status code, 0 if the http request error and has no response.
-     * @param throwable
-     */
-    public HttpException(int exceptionCode, Throwable throwable) {
-        super(throwable);
-        this.exceptionCode = exceptionCode;
-    }
+	public HttpException(int exceptionCode, String detailMessage) {
+		super(detailMessage);
+		this.exceptionCode = exceptionCode;
+	}
 
-    /**
-     * @return The http response status code, 0 if the http request error and has no response.
-     */
-    public int getExceptionCode() {
-        return exceptionCode;
-    }
+	public HttpException(int exceptionCode, String detailMessage,
+			HttpResponse httpResponse, ResponseInfo<?> responseInfo) {
+		super(detailMessage);
+		this.exceptionCode = exceptionCode;
+		this.httpResponse = httpResponse;
+		this.responseInfo = responseInfo;
+	}
+
+	public HttpException(int exceptionCode, String detailMessage,
+			Throwable throwable) {
+		super(detailMessage, throwable);
+		this.exceptionCode = exceptionCode;
+	}
+
+	public HttpException(int exceptionCode, Throwable throwable) {
+		super(throwable);
+		this.exceptionCode = exceptionCode;
+	}
+
+	public int getExceptionCode() {
+		return this.exceptionCode;
+	}
+
+	public HttpResponse getHttpResponse() {
+		return this.httpResponse;
+	}
+
+	public void setHttpResponse(HttpResponse httpResponse) {
+		this.httpResponse = httpResponse;
+	}
+
+	public ResponseInfo<?> getResponseInfo() {
+		return this.responseInfo;
+	}
+
+	public void setResponseInfo(ResponseInfo<?> responseInfo) {
+		this.responseInfo = responseInfo;
+	}
 }

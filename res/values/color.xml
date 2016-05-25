@@ -15,12 +15,16 @@
     <color name="dialog_bg">#F2F2F2</color>
     <color name="dialog_bg_press">#DEDEDE</color>
     <color name="line_grey">#E6E6E6</color>
+    <color name="dot_red">#D94D4C</color>
     <!-- <color name="line_grey">#CCCCCC</color> -->
     <color name="gray_selected">#DEDEDE</color>
+    <color name="bg_order_history">#635A5A</color>
     <!--  -->
+    <color name="province_line_border">#C7C7C7</color>
     <color name="icon_green">#008B45</color>
     <color name="icon_yellow">#EEC900</color>
     <color name="icon_red">#FF6347</color>
+    <color name="grey_1">#efefef</color>
     <color name="transparent">#01000000</color>
     <color name="bg_grey">#f9f9f9</color>
     <color name="bg_brown">#635A5A</color>
@@ -33,5 +37,12 @@
     <color name="text_blue">#00a1e1</color>
     <color name="text_blue_pressed">#1C86EE</color>
     <color name="black_bg">#484848</color>
+
+    <!-- 上传图片添加的颜色 -->
+    <color name="none_color">#00000000</color>
+    <color name="plugin_camera_black">#000000</color>
+    <color name="albumback">#E1E0DE</color>
+    <color name="style_red">#ff4c41</color>
+    <color name="style_divider_color">#C9C7CD</color>
 
 </resources>

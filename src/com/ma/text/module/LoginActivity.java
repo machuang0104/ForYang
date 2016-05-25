@@ -11,7 +11,7 @@ import com.ma.text.anno.view.InjectLayout;
 import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.compoment.cache.UserCache;
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.tools.tip.ToastUtil;
 
 /**
  * Description: Login Page
@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity {
 				accountStr = etAccount.getText().toString().trim();
 
 				if (isStrEmpty(accountStr)) {
-					ToastUtils.show(R.string.login_tip_pwd_null);
+					ToastUtil.show(R.string.login_tip_pwd_null);
 				} else
 					doLogin(accountStr);
 				break;
@@ -56,10 +56,10 @@ public class LoginActivity extends BaseActivity {
 
 	private void doLogin(String account) {
 		if (account.equals(UserCache.getPWD())) {
-			ToastUtils.show(R.string.login_sucess);
+			ToastUtil.show(R.string.login_sucess);
 			doActivity(MainActivity.class);
 		} else {
-			ToastUtils.show(R.string.login_tip_pwd_wrong);
+			ToastUtil.show(R.string.login_tip_pwd_wrong);
 		}
 	}
 
@@ -73,7 +73,7 @@ public class LoginActivity extends BaseActivity {
 				System.exit(0);
 			} else {
 				firstTime = System.currentTimeMillis();
-				ToastUtils.show(R.string.tip_exit);
+				ToastUtil.show(R.string.tip_exit);
 			}
 		}
 		return true;

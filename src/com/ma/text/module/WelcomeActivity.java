@@ -9,9 +9,13 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationListener;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.compoment.cache.UserCache;
+import com.ma.text.compoment.location.MapUtil;
 import com.ma.text.db.client.manager.TypeManager;
+import com.ma.text.test.TestActivity;
 import com.ma.text.vo.db.TypeVo;
 
 /**
@@ -20,6 +24,8 @@ import com.ma.text.vo.db.TypeVo;
 public class WelcomeActivity extends BaseActivity {
 
 	ImageView img_homeAD;
+
+	boolean locationFinish = false;
 
 	@Override
 	protected void afterOnCreate() {
@@ -30,7 +36,24 @@ public class WelcomeActivity extends BaseActivity {
 		img_homeAD.setScaleType(ScaleType.CENTER_CROP);
 		// img_homeAD.setImageResource(R.drawable.guide_0);
 		setContentView(img_homeAD);
-		new ProgressBarAsyncTask().execute(1000);
+		boolean isTest = false;
+		MapUtil.getIns().start(this, new AMapLocationListener() {
+
+			@Override
+			public void onLocationChanged(AMapLocation loc) {
+				locationFinish = true;
+				if (TextUtils.isEmpty(loc.getCity())) {
+					UserCache.saveCity(loc.getCity());
+				}
+				doMainActivity();
+			}
+		});
+		if (!isTest) {
+			new ProgressBarAsyncTask().execute(1000);
+		} else {
+			doActivity(TestActivity.class);
+			finish();
+		}
 		ArrayList<TypeVo> list = TypeManager.getInstance().findAll();
 		if (list == null || list.size() == 0) {
 			TypeVo v = new TypeVo();
@@ -55,17 +78,21 @@ public class WelcomeActivity extends BaseActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
-			if (TextUtils.isEmpty(UserCache.getPWD())) {
-				Intent intent = new Intent(WelcomeActivity.this,
-						MainActivity.class);
-				startActivity(intent);
-			} else {
-				Intent intent = new Intent(WelcomeActivity.this,
-						LoginActivity.class);
-				startActivity(intent);
+			if (locationFinish) {
+				doMainActivity();
 			}
-			finish();
 		}
 	}
 
+	private void doMainActivity() {
+		if (TextUtils.isEmpty(UserCache.getPWD())) {
+			Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+			startActivity(intent);
+		} else {
+			Intent intent = new Intent(WelcomeActivity.this,
+					LoginActivity.class);
+			startActivity(intent);
+		}
+		finish();
+	}
 }

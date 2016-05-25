@@ -212,18 +212,6 @@ public class MainFragment extends BaseFragment {
 			}
 		}
 
-		// if (ShareUtil.getBoolean(K.share.NEED_REFRESH)) {
-		// pullListener.onRefresh();
-		// ShareUtil.saveBoolean(K.share.NEED_REFRESH, false);
-		// }
-		// }
-		// if (ShareUtil.getBoolean(K.intent.NEED_SHOW)) {
-		// queryCode(ShareUtil.getString(K.intent.NEED_RESULT));
-		// ShareUtil.clear(K.intent.NEED_SHOW);
-		// ShareUtil.clear(K.intent.NEED_RESULT);
-		// }
 	}
 
-	private void queryCode(final String result) {
-	}
 }

@@ -5,7 +5,7 @@ import com.ma.text.anno.view.InjectLayout;
 import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.compoment.cache.UserCache;
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.tools.tip.ToastUtil;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,9 +50,9 @@ public class SetPwdActivity extends BaseActivity {
 		String pwd2 = etPwd2.getText().toString().trim();
 		if (pwd1.equals(pwd2)) {
 			UserCache.savePWD(pwd1);
-			ToastUtils.show(R.string.setting_add_pwd_sucess);
+			ToastUtil.show(R.string.setting_add_pwd_sucess);
 		}else {
-			ToastUtils.show(R.string.setting_add_pwd_fail);
+			ToastUtil.show(R.string.setting_add_pwd_fail);
 		}
 	}
 }

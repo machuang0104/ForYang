@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.ma.text.R;
 import com.ma.text.anno.view.Injector;
-import com.ma.text.http.global.Result;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
 import com.ma.text.tools.StrUtil;
@@ -22,7 +21,6 @@ import com.ma.text.view.swipeback.ActivityHelper;
 import com.ma.text.view.swipeback.ISwipeBack;
 import com.ma.text.view.swipeback.SwipeBackLayout;
 import com.ma.text.view.swipeback.Utils;
-import com.ma.text.vo.Response;
 
 /**
  * 所有acticity需要继承的基类activity
@@ -183,11 +181,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 			// InputMethodManager.HIDE_NOT_ALWAYS);
 		} catch (Exception e) {
 		}
-	}
-
-	protected <T> String getMsg(Response<T> res) {
-		return Result
-				.getMsg(res.getTaskId(), res.getResult(), res.getMessage());
 	}
 
 }

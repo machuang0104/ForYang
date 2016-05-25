@@ -13,11 +13,11 @@ public class UserCache {
 		SharedUtil.saveString("app_version", version);
 	}
 
-	public static String getVersion() {
-		String ver = SharedUtil.getString("app_version1");
-		if (ver.equals("")) {
-			return "1.0.0_1";
-		} else
-			return ver;
+	public static void saveCity(String city) {
+		SharedUtil.saveString("city", city);
+	}
+
+	public static String getCity() {
+		return SharedUtil.getString("city");
 	}
 }

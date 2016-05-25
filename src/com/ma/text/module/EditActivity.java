@@ -7,7 +7,7 @@ import com.ma.text.base.BaseActivity;
 import com.ma.text.compoment.cache.SharedUtil;
 import com.ma.text.compoment.dialog.DialogClient;
 import com.ma.text.db.client.manager.ContentManager;
-import com.ma.text.tools.tip.ToastUtils;
+import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.vo.db.ContentVo;
 
 import android.view.View;
@@ -63,8 +63,10 @@ public class EditActivity extends BaseActivity {
 				c.setCreatetime(System.currentTimeMillis());
 				c.setType_id(typeId);
 				ContentManager.getInstance().insertUpdate(c);
-				ToastUtils.show(R.string.save_sucess);
+
+				ToastUtil.show(R.string.save_sucess);
 				SharedUtil.saveInt("have", -2);
+
 				finish();
 			}
 		});

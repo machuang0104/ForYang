@@ -3,6 +3,7 @@ package com.ma.text.tools;
 import com.ma.text.app.App;
 
 import android.content.Context;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 
 /**
@@ -21,7 +22,6 @@ public class DeviceUtil {
 		return android.os.Build.VERSION.SDK_INT;
 	}
 	public static String getPhoneIMEI(Context context) {
-
 		return ((TelephonyManager) context
 				.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
 
