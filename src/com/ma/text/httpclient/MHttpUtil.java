@@ -98,8 +98,7 @@ public class MHttpUtil {
 		}
 		HttpProtocolParams.setUserAgent(params, userAgent);
 
-		ConnManagerParams.setMaxConnectionsPerRoute(params,
-				new ConnPerRouteBean(10));
+		ConnManagerParams.setMaxConnectionsPerRoute(params, new ConnPerRouteBean(10));
 		ConnManagerParams.setMaxTotalConnections(params, 10);
 
 		HttpConnectionParams.setTcpNoDelay(params, true);
@@ -107,24 +106,18 @@ public class MHttpUtil {
 		HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
 
 		SchemeRegistry schemeRegistry = new SchemeRegistry();
-		schemeRegistry.register(new Scheme("http", PlainSocketFactory
-				.getSocketFactory(), 80));
-		schemeRegistry.register(new Scheme("https", SSLTrust
-				.getSocketFactory1(), 443));
+		schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+		schemeRegistry.register(new Scheme("https", SSLTrust.getSocketFactory1(), 443));
 
-		httpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(
-				params, schemeRegistry), params);
-		httpClient.setHttpRequestRetryHandler(new RetryHandler(
-				DEFAULT_RETRY_TIMES));
+		httpClient = new DefaultHttpClient(new ThreadSafeClientConnManager(params, schemeRegistry), params);
+		httpClient.setHttpRequestRetryHandler(new RetryHandler(DEFAULT_RETRY_TIMES));
 
 		httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
 			@Override
-			public void process(org.apache.http.HttpRequest httpRequest,
-					HttpContext httpContext)
+			public void process(org.apache.http.HttpRequest httpRequest, HttpContext httpContext)
 					throws org.apache.http.HttpException, IOException {
 				if (!httpRequest.containsHeader(HEADER_ACCEPT_ENCODING)) {
-					httpRequest
-							.addHeader(HEADER_ACCEPT_ENCODING, ENCODING_GZIP);
+					httpRequest.addHeader(HEADER_ACCEPT_ENCODING, ENCODING_GZIP);
 				}
 			}
 		});
@@ -141,8 +134,7 @@ public class MHttpUtil {
 				if (encoding != null) {
 					for (HeaderElement element : encoding.getElements()) {
 						if (element.getName().equalsIgnoreCase("gzip")) {
-							response.setEntity(new GZipDecompressingEntity(
-									response.getEntity()));
+							response.setEntity(new GZipDecompressingEntity(response.getEntity()));
 							return;
 						}
 					}
@@ -166,8 +158,7 @@ public class MHttpUtil {
 	private static final String ENCODING_GZIP = "gzip";
 
 	private final static int DEFAULT_POOL_SIZE = 3;
-	private final static PriorityExecutor EXECUTOR = new PriorityExecutor(
-			DEFAULT_POOL_SIZE);
+	private final static PriorityExecutor EXECUTOR = new PriorityExecutor(DEFAULT_POOL_SIZE);
 
 	public HttpClient getHttpClient() {
 		return this.httpClient;
@@ -183,8 +174,7 @@ public class MHttpUtil {
 		return this;
 	}
 
-	public MHttpUtil configHttpRedirectHandler(
-			HttpRedirectHandler httpRedirectHandler) {
+	public MHttpUtil configHttpRedirectHandler(HttpRedirectHandler httpRedirectHandler) {
 		this.httpRedirectHandler = httpRedirectHandler;
 		return this;
 	}
@@ -229,15 +219,13 @@ public class MHttpUtil {
 	}
 
 	public MHttpUtil configRegisterScheme(Scheme scheme) {
-		this.httpClient.getConnectionManager().getSchemeRegistry()
-				.register(scheme);
+		this.httpClient.getConnectionManager().getSchemeRegistry().register(scheme);
 		return this;
 	}
 
 	public MHttpUtil configSSLSocketFactory(SSLSocketFactory sslSocketFactory) {
 		Scheme scheme = new Scheme("https", sslSocketFactory, 443);
-		this.httpClient.getConnectionManager().getSchemeRegistry()
-				.register(scheme);
+		this.httpClient.getConnectionManager().getSchemeRegistry().register(scheme);
 		return this;
 	}
 
@@ -254,29 +242,29 @@ public class MHttpUtil {
 	// ***************************************** send request
 	// *******************************************
 
-	public <T> MHandler<T> post(int actionId, MParams params, String urlParams,
-			MCallBack<T> callBack) {
+	public <T> MHandler<T> post(int actionId, MParams params, String urlParams, MCallBack<T> callBack) {
 		return send(actionId, HttpMethod.POST, urlParams, params, callBack);
 	}
 
-	public <T> MHandler<T> post(int actionId, MParams params,
-			MCallBack<T> callBack) {
+	public <T> MHandler<T> post(int actionId, MParams params, MCallBack<T> callBack) {
 		return send(actionId, HttpMethod.POST, null, params, callBack);
 	}
 
-	public <T> MHandler<T> get(int actionId, MParams params,
-			MCallBack<T> callBack) {
+	public <T> MHandler<T> get(int actionId, MParams params, MCallBack<T> callBack) {
 		return send(actionId, HttpMethod.GET, null, params, callBack);
 	}
 
-	public <T> MHandler<T> get(int actionId, MParams params, String urlParams,
-			MCallBack<T> callBack) {
+	public <T> MHandler<T> get(int actionId, MParams params, String urlParams, MCallBack<T> callBack) {
 		return send(actionId, HttpMethod.GET, urlParams, params, callBack);
 	}
 
-	private <T> MHandler<T> send(int actionId, MRequest.HttpMethod method,
-			String urlParams, MParams params, MCallBack<T> callBack) {
+	private <T> MHandler<T> send(int actionId, MRequest.HttpMethod method, String urlParams, MParams params,
+			MCallBack<T> callBack) {
 		String url = null;
+		if (!NetWorkUtil.isNetworkConnected(App.getApp())) {
+			callBack.onFailure(new HttpException(-1), "no network");
+			return null;
+		}
 		if (urlParams == null) {
 			url = ActionUrl.getUrl(actionId);
 		} else {
@@ -301,8 +289,7 @@ public class MHttpUtil {
 	 * @param isEncrypt
 	 * @param callBack
 	 */
-	public <T> MHandler<T> postBody(int taskId, Object map, boolean isEncrypt,
-			MCallBack<T> callBack) {
+	public <T> MHandler<T> postBody(int taskId, Object map, boolean isEncrypt, MCallBack<T> callBack) {
 		String url = ActionUrl.getUrl(taskId);
 		MRequest request = new MRequest(HttpMethod.POST, url);
 		request.setActionId(taskId);
@@ -324,11 +311,9 @@ public class MHttpUtil {
 	}
 
 	// //////////////////////////////////////////////////////////////////////////////////////////////
-	private <T> MHandler<T> sendRequest(MRequest request, MParams params,
-			MCallBack<T> callBack) {
+	private <T> MHandler<T> sendRequest(MRequest request, MParams params, MCallBack<T> callBack) {
 
-		MHandler<T> handler = new MHandler<T>(httpClient, httpContext,
-				responseTextCharset, callBack);
+		MHandler<T> handler = new MHandler<T>(httpClient, httpContext, responseTextCharset, callBack);
 
 		handler.setExpiry(currentRequestExpiry);
 		handler.setHttpRedirectHandler(httpRedirectHandler);
@@ -336,10 +321,8 @@ public class MHttpUtil {
 
 		if (!NetWorkUtil.isNetworkConnected(App.getApp())) {
 			ToastUtil.show(R.string.tip_no_network);
-			HttpException error = new HttpException(App.getApp().getString(
-					R.string.tip_no_network));
-			callBack.onFailure(error,
-					App.getApp().getString(R.string.tip_no_network));
+			HttpException error = new HttpException(App.getApp().getString(R.string.tip_no_network));
+			callBack.onFailure(error, App.getApp().getString(R.string.tip_no_network));
 			return null;
 		}
 		handler.executeOnExecutor(EXECUTOR, request);

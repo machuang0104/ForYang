@@ -2,18 +2,11 @@ package com.ma.text.module;
 
 import java.util.ArrayList;
 
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
+import com.amap.api.location.AMapLocationListener;
 import com.lidroid.xutils.exception.HttpException;
 import com.ma.text.R;
 import com.ma.text.adapter.ViewHolders;
@@ -35,6 +28,19 @@ import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.view.menu.SlidingMenu;
 import com.ma.text.view.menu.SlidingMenu.OpenStatusListener;
 import com.ma.text.vo.db.TypeVo;
+
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 @InjectLayout(id = R.layout.activity_main)
 public class MainActivity extends BaseActivity {
@@ -78,35 +84,34 @@ public class MainActivity extends BaseActivity {
 				mainFragment.onTypeChange(dataList.get(position).getTitle(), dataList.get(position).getType_id());
 			}
 		});
-		getWeather();
+		startLocation();
 	}
 
 	private void getWeather() {
-		String cityName = "苏州";
-		if (TextUtils.isEmpty(UserCache.getCity())) {
-			cityName = UserCache.getCity();
+		String cityName = UserCache.getCity();
+		if (TextUtils.isEmpty(cityName)) {
+			cityName = "苏州";
 		}
-		Task.getInstance().getWeather(cityName,
-				new MCallBack<WeatherStatusVo>() {
+		Task.getInstance().getWeather(cityName, new MCallBack<WeatherStatusVo>() {
 
-					@Override
-					public void onSuccess(Response<WeatherStatusVo> res) {
-						if (res.getData().getDesc().equals("OK")) {
-							try {
-								showWeather(res.getData().getData());
-							} catch (Exception e) {
-								ToastUtil.show(R.string.weather_fail);
-							}
-						} else {
-							ToastUtil.show(R.string.weather_fail);
-						}
-					}
-
-					@Override
-					public void onFailure(HttpException e, String msg) {
+			@Override
+			public void onSuccess(Response<WeatherStatusVo> res) {
+				if (res.getData().getDesc().equals("OK")) {
+					try {
+						showWeather(res.getData().getData());
+					} catch (Exception e) {
 						ToastUtil.show(R.string.weather_fail);
 					}
-				});
+				} else {
+					ToastUtil.show(R.string.weather_fail);
+				}
+			}
+
+			@Override
+			public void onFailure(HttpException e, String msg) {
+				ToastUtil.show(R.string.weather_fail);
+			}
+		});
 	}
 
 	private void showWeather(WeatherDataVo wea) {
@@ -114,10 +119,8 @@ public class MainActivity extends BaseActivity {
 		StringBuffer w = new StringBuffer("\n");
 		if (list != null && list.size() > 0) {
 			WeatherForecastVo fo = list.get(0);
-			w.append(fo.getHigh()).append(" - ").append(fo.getLow())
-					.append("\n").append(fo.getFengxiang()).append(" - ")
-					.append(fo.getFengli()).append("\n").append(fo.getType())
-					.append("\n");
+			w.append(fo.getHigh()).append(" - ").append(fo.getLow()).append("\n").append(fo.getFengxiang())
+					.append(" - ").append(fo.getFengli()).append("\n").append(fo.getType()).append("\n");
 			city.setText(wea.getCity() + " - " + fo.getDate());
 		}
 		w.append(wea.getGanmao());
@@ -227,4 +230,73 @@ public class MainActivity extends BaseActivity {
 
 	}
 
+	AMapLocationListener mLocListener = new AMapLocationListener() {
+		@Override
+		public void onLocationChanged(AMapLocation loc) {
+			String city = loc.getCity();
+			if (!TextUtils.isEmpty(city)) {
+				if (city.contains("市")) {
+					city.replace("市", "");
+				} else if (city.contains("县")) {
+					city.replace("县", "");
+				}
+				UserCache.saveCity(loc.getCity());
+			}
+			getWeather();
+			client.stopLocation();
+		}
+	};
+	AMapLocationClientOption option;
+	AMapLocationClient client;
+
+	private void startLocation() {
+		client = new AMapLocationClient(this.getApplicationContext());
+		option = new AMapLocationClientOption();
+		option.setLocationMode(AMapLocationMode.Hight_Accuracy);
+		option.setOnceLocation(true);
+		option.setMockEnable(false);
+		option.setGpsFirst(true);
+		option.setNeedAddress(true);
+		option.setInterval(1000);
+		client.setLocationListener(mLocListener);
+		client.setLocationOption(option);
+		client.startLocation();
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (null != client) {
+			client.onDestroy();
+			client = null;
+			option = null;
+		}
+	}
+
+	// public static String sHA1(Context context) {
+	// try {
+	// PackageInfo info =
+	// context.getPackageManager().getPackageInfo(context.getPackageName(),
+	// PackageManager.GET_SIGNATURES);
+	// byte[] cert = info.signatures[0].toByteArray();
+	// MessageDigest md = MessageDigest.getInstance("SHA1");
+	// byte[] publicKey = md.digest(cert);
+	// StringBuffer hexString = new StringBuffer();
+	// for (int i = 0; i < publicKey.length; i++) {
+	// String appendString = Integer.toHexString(0xFF &
+	// publicKey[i]).toUpperCase(Locale.US);
+	// if (appendString.length() == 1)
+	// hexString.append("0");
+	// hexString.append(appendString);
+	// Log.d("machuang", " result = " + hexString);
+	// }
+	// Log.d("machuang", " result = " + hexString);
+	// return hexString.toString();
+	// } catch (NameNotFoundException e) {
+	// e.printStackTrace();
+	// } catch (NoSuchAlgorithmException e) {
+	// e.printStackTrace();
+	// }
+	// return null;
+	// }
 }
