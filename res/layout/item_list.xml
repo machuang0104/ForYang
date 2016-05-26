@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/half_corner_top_white"
         android:ellipsize="marquee"
-        android:gravity="start|center_vertical"
+        android:gravity="left|center_vertical"
         android:text="@string/app_name"
         android:textSize="@dimen/size_nomal" />
 
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:gravity="end"
+        android:gravity="right"
         android:textColor="@color/text_gray"
         android:text="@string/app_name"
         android:textSize="@dimen/size_small" />

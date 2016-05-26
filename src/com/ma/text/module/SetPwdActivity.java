@@ -51,6 +51,7 @@ public class SetPwdActivity extends BaseActivity {
 		if (pwd1.equals(pwd2)) {
 			UserCache.savePWD(pwd1);
 			ToastUtil.show(R.string.setting_add_pwd_sucess);
+			finish();
 		}else {
 			ToastUtil.show(R.string.setting_add_pwd_fail);
 		}

@@ -9,6 +9,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/space_larger"
         android:layout_marginTop="100dp"
+        android:visibility="invisible"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -18,24 +19,24 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/dimen_20"
         android:text="@string/app_name"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/text_gray" />
 
     <EditText
         android:id="@+id/etLoginAccount"
         style="@style/padding"
         android:layout_width="match_parent"
         android:layout_above="@+id/etLoginPwd"
-        android:layout_alignEnd="@+id/etLoginPwd"
-        android:layout_alignStart="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
+        android:layout_alignLeft="@+id/etLoginPwd"
         android:background="@drawable/shape_bg_white_line_gray"
         android:drawablePadding="@dimen/space_normal"
-        android:drawableStart="@drawable/icon_code"
+        android:drawableLeft="@drawable/icon_code"
         android:gravity="center_vertical"
         android:hint="@string/login_hint_pwd"
         android:inputType="textPassword"
         android:maxLength="6"
-        android:paddingEnd="@dimen/space_larger"
-        android:paddingStart="@dimen/space_normal"
+        android:paddingRight="@dimen/space_larger"
+        android:paddingLeft="@dimen/space_normal"
         android:singleLine="true"
         android:textSize="@dimen/size_nomal" >
     </EditText>
@@ -45,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/etLoginAccount"
-        android:layout_alignEnd="@+id/etLoginAccount"
+        android:layout_alignRight="@+id/etLoginAccount"
         android:layout_alignTop="@+id/etLoginAccount"
         android:padding="@dimen/space_small"
         android:src="@drawable/icon_delete_edit"
@@ -60,12 +61,12 @@
         android:layout_marginTop="@dimen/space_normal"
         android:background="@drawable/shape_bg_white_line_gray"
         android:drawablePadding="@dimen/space_normal"
-        android:drawableStart="@drawable/icon_code"
+        android:drawableLeft="@drawable/icon_code"
         android:gravity="center_vertical"
         android:hint="@string/login_hint_pwd"
         android:inputType="textPassword"
-        android:paddingEnd="@dimen/space_normal"
-        android:paddingStart="@dimen/space_normal"
+        android:paddingRight="@dimen/space_normal"
+        android:paddingLeft="@dimen/space_normal"
         android:singleLine="true"
         android:textSize="@dimen/size_nomal"
         android:visibility="invisible" />
@@ -75,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/etLoginPwd"
-        android:layout_alignEnd="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
         android:layout_alignTop="@+id/etLoginPwd"
         android:padding="@dimen/space_small"
         android:src="@drawable/icon_delete_edit"
@@ -85,8 +86,8 @@
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/etLoginPwd"
-        android:layout_alignStart="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
+        android:layout_alignLeft="@+id/etLoginPwd"
         android:layout_below="@+id/etLoginPwd"
         android:layout_marginTop="@dimen/space_larger"
         android:background="@drawable/bgs_theme_deeper"

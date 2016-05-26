@@ -61,7 +61,7 @@
     <string name="load_fail">加载失败</string>
     <!--  -->
     <!-- 登陆注册 -->
-    <string name="login_sucess">登录成功</string>
+    <string name="login_sucess">验证成功</string>
     <string name="login_fail">登录失败，身份信息为空</string>
     <string name="login_out_tip">退出登录将清除记录扫描的订单信息，确认退出？</string>
     <string name="key_confirm">确定</string>

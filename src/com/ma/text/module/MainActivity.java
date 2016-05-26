@@ -5,6 +5,23 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -32,23 +49,6 @@ import com.ma.text.view.menu.SlidingMenu;
 import com.ma.text.view.menu.SlidingMenu.OpenStatusListener;
 import com.ma.text.vo.db.TypeVo;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-
 @InjectLayout(id = R.layout.activity_main)
 public class MainActivity extends BaseActivity {
 	@InjectView(id = R.id.sliding_menu)
@@ -67,7 +67,8 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void afterOnCreate() {
 		mainFragment = new MainFragment(mMenu);
-		getSupportFragmentManager().beginTransaction().add(R.id.fragment_root, mainFragment).commit();
+		getSupportFragmentManager().beginTransaction()
+				.add(R.id.fragment_root, mainFragment).commit();
 		findViewById(R.id.add_type).setOnClickListener(menuListener);
 		findViewById(R.id.set).setOnClickListener(menuListener);
 		typeList.setAdapter(mAdappter);
@@ -86,12 +87,26 @@ public class MainActivity extends BaseActivity {
 		});
 		typeList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
 				mMenu.closeMenu();
-				mainFragment.onTypeChange(dataList.get(position).getTitle(), dataList.get(position).getType_id());
+				onMenuClicked(position);
 			}
 		});
 		startLocation();
+	}
+
+	private void onMenuClicked(int position) {
+		int size = dataList.size();
+		if (position >= size || size == 0)
+			return;
+		if (position != -1) {
+			mainFragment.onTypeChange(dataList.get(position).getTitle(),
+					dataList.get(position).getType_id());
+		} else {
+			mainFragment.onTypeChange(dataList.get(size - 1).getTitle(),
+					dataList.get(size - 1).getType_id());
+		}
 	}
 
 	private void getWeather() {
@@ -99,26 +114,27 @@ public class MainActivity extends BaseActivity {
 		if (TextUtils.isEmpty(cityName)) {
 			cityName = "苏州";
 		}
-		Task.getInstance().getWeather(cityName, new MCallBack<WeatherStatusVo>() {
+		Task.getInstance().getWeather(cityName,
+				new MCallBack<WeatherStatusVo>() {
 
-			@Override
-			public void onSuccess(Response<WeatherStatusVo> res) {
-				if (res.getData().getDesc().equals("OK")) {
-					try {
-						showWeather(res.getData().getData());
-					} catch (Exception e) {
+					@Override
+					public void onSuccess(Response<WeatherStatusVo> res) {
+						if (res.getData().getDesc().equals("OK")) {
+							try {
+								showWeather(res.getData().getData());
+							} catch (Exception e) {
+								ToastUtil.show(R.string.weather_fail);
+							}
+						} else {
+							ToastUtil.show(R.string.weather_fail);
+						}
+					}
+
+					@Override
+					public void onFailure(HttpException e, String msg) {
 						ToastUtil.show(R.string.weather_fail);
 					}
-				} else {
-					ToastUtil.show(R.string.weather_fail);
-				}
-			}
-
-			@Override
-			public void onFailure(HttpException e, String msg) {
-				ToastUtil.show(R.string.weather_fail);
-			}
-		});
+				});
 	}
 
 	private void showWeather(WeatherDataVo wea) {
@@ -126,8 +142,10 @@ public class MainActivity extends BaseActivity {
 		StringBuffer w = new StringBuffer("\n");
 		if (list != null && list.size() > 0) {
 			WeatherForecastVo fo = list.get(0);
-			w.append(fo.getHigh()).append(" - ").append(fo.getLow()).append("\n").append(fo.getFengxiang())
-					.append(" - ").append(fo.getFengli()).append("\n").append(fo.getType()).append("\n");
+			w.append(fo.getHigh()).append(" - ").append(fo.getLow())
+					.append("\n").append(fo.getFengxiang()).append(" - ")
+					.append(fo.getFengli()).append("\n").append(fo.getType())
+					.append("\n");
 			city.setText(wea.getCity() + " - " + fo.getDate());
 		}
 		w.append(wea.getGanmao());
@@ -162,6 +180,7 @@ public class MainActivity extends BaseActivity {
 							dataList.clear();
 							dataList.addAll(TypeManager.getInstance().findAll());
 							mAdappter.notifyDataSetChanged();
+							onMenuClicked(-1);
 						}
 					}
 				});
@@ -228,7 +247,8 @@ public class MainActivity extends BaseActivity {
 		@Override
 		public View getView(int position, View v, ViewGroup parent) {
 			if (v == null) {
-				v = LayoutInflater.from(MainActivity.this).inflate(R.layout.item_type, parent, false);
+				v = LayoutInflater.from(MainActivity.this).inflate(
+						R.layout.item_type, parent, false);
 			}
 			TextView typeTxt = ViewHolders.get(v, R.id.type_title);
 			typeTxt.setText(dataList.get(position).getTitle());
@@ -240,25 +260,35 @@ public class MainActivity extends BaseActivity {
 	AMapLocationListener mLocListener = new AMapLocationListener() {
 		@Override
 		public void onLocationChanged(AMapLocation loc) {
-			String city = loc.getCity();
-			Log.i("machuang", "loc = " + loc.getLatitude() + " city = " + loc.getCity());
-			if (!TextUtils.isEmpty(city)) {
-				if (city.contains("市")) {
-					city = city.replace("市", "");
-				} else if (city.contains("县")) {
-					city = city.replace("县", "");
-				}
-				UserCache.saveCity(city);
-			}
-			sHA1(MainActivity.this);
-			getWeather();
-			client.stopLocation();
+			locationSucess(loc.getCity());
 		}
 	};
+
+	private void locationSucess(String city) {
+		if (!TextUtils.isEmpty(city)) {
+			if (city.contains("市")) {
+				city = city.replace("市", "");
+			} else if (city.contains("县")) {
+				city = city.replace("县", "");
+			}
+			UserCache.saveCity(city);
+		} else {
+		}
+		sHA1(MainActivity.this);
+		getWeather();
+		if (client != null) {
+			client.stopLocation();
+		}
+	}
+
 	AMapLocationClientOption option;
 	AMapLocationClient client;
 
 	private void startLocation() {
+		if (!UserCache.isNeddLocation()) {
+			getWeather();
+			return;
+		}
 		client = new AMapLocationClient(this.getApplicationContext());
 		option = new AMapLocationClientOption();
 		option.setLocationMode(AMapLocationMode.Hight_Accuracy);
@@ -283,14 +313,15 @@ public class MainActivity extends BaseActivity {
 
 	public static String sHA1(Context context) {
 		try {
-			PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(),
-					PackageManager.GET_SIGNATURES);
+			PackageInfo info = context.getPackageManager().getPackageInfo(
+					context.getPackageName(), PackageManager.GET_SIGNATURES);
 			byte[] cert = info.signatures[0].toByteArray();
 			MessageDigest md = MessageDigest.getInstance("SHA1");
 			byte[] publicKey = md.digest(cert);
 			StringBuffer hexString = new StringBuffer();
 			for (int i = 0; i < publicKey.length; i++) {
-				String appendString = Integer.toHexString(0xFF & publicKey[i]).toUpperCase(Locale.US);
+				String appendString = Integer.toHexString(0xFF & publicKey[i])
+						.toUpperCase(Locale.US);
 				if (appendString.length() == 1)
 					hexString.append("0");
 				hexString.append(appendString);

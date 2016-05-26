@@ -44,7 +44,9 @@
         <!-- 高德start -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="ee6860049dee4386b66542bb16e1e53b" />
+            android:value="5528cff69cbc6a2cd0127144d95db7f4" />
+        <!-- Release -->
+        <!-- 5528cff69cbc6a2cd0127144d95db7f4 -->
 
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德end -->

@@ -58,6 +58,7 @@ public class LoginActivity extends BaseActivity {
 		if (account.equals(UserCache.getPWD())) {
 			ToastUtil.show(R.string.login_sucess);
 			doActivity(MainActivity.class);
+			finish();
 		} else {
 			ToastUtil.show(R.string.login_tip_pwd_wrong);
 		}

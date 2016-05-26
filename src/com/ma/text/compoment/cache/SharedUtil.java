@@ -31,14 +31,6 @@ public class SharedUtil {
 		editor.commit();
 	}
 
-	public static void saveDouble(String key, double value) {
-		SharedPreferences set = App.getApp().getSharedPreferences(
-				K.cache.SHARED_NAME, Activity.MODE_PRIVATE);
-		SharedPreferences.Editor editor = set.edit();
-		editor.putFloat(key, (float) value);
-		editor.commit();
-	}
-
 	public static void saveFloat(String key, float value) {
 		SharedPreferences set = App.getApp().getSharedPreferences(
 				K.cache.SHARED_NAME, Activity.MODE_PRIVATE);
