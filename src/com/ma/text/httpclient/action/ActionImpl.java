@@ -41,8 +41,7 @@ class ActionImpl implements IAction {
 
 	@Override
 	public void getWeather(String cityName, MCallBack<WeatherStatusVo> callBack) {
-		MParams params = new MParams();
-		getHttp().get(ActionId.WEATHER_DETAIL, params, cityName, callBack);
+		getHttp().get(ActionId.WEATHER_DETAIL, null, cityName, callBack);
 	}
 
 }

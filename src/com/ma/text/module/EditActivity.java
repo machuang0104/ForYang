@@ -31,6 +31,7 @@ public class EditActivity extends BaseActivity {
 
 	@Override
 	protected void afterOnCreate() {
+		setSwipeBackEnable(true);
 		boolean isNew = getIntent().getBooleanExtra("isNew", true);
 		if (isNew) {
 			initAdd();
@@ -40,8 +41,7 @@ public class EditActivity extends BaseActivity {
 	}
 
 	private void initView() {
-		final ContentVo vo = (ContentVo) getIntent().getSerializableExtra(
-				"data");
+		final ContentVo vo = (ContentVo) getIntent().getSerializableExtra("data");
 		typeId = vo.getType_id();
 		title.setText(vo.getTitle());
 		title.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -55,17 +55,16 @@ public class EditActivity extends BaseActivity {
 		save.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				DialogClient.showTwo(EditActivity.this,
-						getString(R.string.tip_delete), new OnClickListener() {
+				DialogClient.showTwo(EditActivity.this, getString(R.string.tip_delete), new OnClickListener() {
 
-							@Override
-							public void onClick(View v) {
-								ContentManager.getInstance().delete(vo.getId());
-								ToastUtil.show(R.string.tip_delete_sucess);
-								SharedUtil.saveInt("have", -2);
-								finish();
-							}
-						});
+					@Override
+					public void onClick(View v) {
+						ContentManager.getInstance().delete(vo.getId());
+						ToastUtil.show(R.string.tip_delete_sucess);
+						SharedUtil.saveInt("have", -2);
+						finish();
+					}
+				});
 			}
 		});
 	}
