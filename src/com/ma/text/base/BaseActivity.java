@@ -12,7 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.ma.text.R;
-import com.ma.text.anno.view.Injector;
+import com.ma.text.compoment.annoview.Injector;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
 import com.ma.text.tools.StrUtil;
@@ -70,7 +70,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 		mHelper = new ActivityHelper(this);
 		mHelper.onActivityCreate();
 		ExitApplication.getInstance().addActivity(this);
-		LogUtil.i("tag_activity", "oncreate-->" + this.getClass().getSimpleName());
+		LogUtil.i("tag_activity", "oncreate-->"
+				+ this.getClass().getSimpleName());
 		setSwipeBackEnable(false);
 		afterOnCreate();
 	}
@@ -82,10 +83,11 @@ public abstract class BaseActivity extends FragmentActivity implements
 		setSwipeBackEnable(isNeedSwipeBack);
 	}
 
-	protected void updateTitle(int strResId) {
+	private void updateTitle(int strResId) {
 		try {
-			String titleStr = getString(strResId);
-			updateTitle(titleStr, false);
+			TextView title = (TextView) findViewById(R.id.title_tv);
+			if (title != null)
+				title.setText(strResId);
 		} catch (NotFoundException e) {
 			LogUtil.e("tag_activity", "update title failed : "
 					+ this.getClass().getSimpleName());
@@ -95,17 +97,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 	/**
 	 * addSwipeBack: 实现滑动返回，设置后需进行显示测试，activity主题需设置为trslucant
 	 */
-	protected void updateTitle(String titleStr, boolean isNeedSwipeBack) {
-		updateTitle(titleStr);
-		setSwipeBackEnable(isNeedSwipeBack);
-	}
-
-	protected void updateTitle(String titleStr) {
-		TextView title = (TextView) findViewById(R.id.title_tv);
-		if (title != null)
-			title.setText(titleStr);
-	}
-
 	private ProgressDialog progressDialog;
 	private View progressView;
 
@@ -129,7 +120,8 @@ public abstract class BaseActivity extends FragmentActivity implements
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		LogUtil.i("tag_activity", "onDestroy-->" + this.getClass().getSimpleName());
+		LogUtil.i("tag_activity", "onDestroy-->"
+				+ this.getClass().getSimpleName());
 
 	}
 

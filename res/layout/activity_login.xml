@@ -2,41 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/linearlayout_root" >
 
-    <ImageView
-        android:id="@+id/login_icon"
-        style="@style/imageview_common"
-        android:layout_above="@+id/login_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/space_larger"
-        android:layout_marginTop="100dp"
-        android:visibility="invisible"
-        android:src="@drawable/ic_launcher" />
-
-    <TextView
-        android:id="@+id/login_title"
-        style="@style/textview_common"
-        android:layout_above="@+id/etLoginAccount"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dimen_20"
-        android:text="@string/app_name"
-        android:textColor="@color/text_gray" />
+    <include layout="@layout/layout_title" />
 
     <EditText
         android:id="@+id/etLoginAccount"
         style="@style/padding"
         android:layout_width="match_parent"
         android:layout_above="@+id/etLoginPwd"
-        android:layout_alignRight="@+id/etLoginPwd"
         android:layout_alignLeft="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
         android:background="@drawable/shape_bg_white_line_gray"
-        android:drawablePadding="@dimen/space_normal"
         android:drawableLeft="@drawable/icon_code"
+        android:drawablePadding="@dimen/space_normal"
         android:gravity="center_vertical"
         android:hint="@string/login_hint_pwd"
         android:inputType="textPassword"
         android:maxLength="6"
-        android:paddingRight="@dimen/space_larger"
         android:paddingLeft="@dimen/space_normal"
+        android:paddingRight="@dimen/space_larger"
         android:singleLine="true"
         android:textSize="@dimen/size_nomal" >
     </EditText>
@@ -60,13 +43,13 @@
         android:layout_marginRight="@dimen/dimen_40"
         android:layout_marginTop="@dimen/space_normal"
         android:background="@drawable/shape_bg_white_line_gray"
-        android:drawablePadding="@dimen/space_normal"
         android:drawableLeft="@drawable/icon_code"
+        android:drawablePadding="@dimen/space_normal"
         android:gravity="center_vertical"
         android:hint="@string/login_hint_pwd"
         android:inputType="textPassword"
-        android:paddingRight="@dimen/space_normal"
         android:paddingLeft="@dimen/space_normal"
+        android:paddingRight="@dimen/space_normal"
         android:singleLine="true"
         android:textSize="@dimen/size_nomal"
         android:visibility="invisible" />
@@ -86,8 +69,8 @@
         android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/etLoginPwd"
         android:layout_alignLeft="@+id/etLoginPwd"
+        android:layout_alignRight="@+id/etLoginPwd"
         android:layout_below="@+id/etLoginPwd"
         android:layout_marginTop="@dimen/space_larger"
         android:background="@drawable/bgs_theme_deeper"

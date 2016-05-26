@@ -6,9 +6,9 @@ import android.widget.TextView;
 
 import com.lidroid.xutils.exception.HttpException;
 import com.ma.text.R;
-import com.ma.text.anno.view.InjectLayout;
-import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.annoview.InjectLayout;
+import com.ma.text.compoment.annoview.InjectView;
 import com.ma.text.httpclient.action.Task;
 import com.ma.text.httpclient.http.MCallBack;
 import com.ma.text.httpclient.http.Response;

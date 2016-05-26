@@ -74,6 +74,8 @@ public class MainFragment extends BaseFragment {
 		mainView.findViewById(R.id.img_menu_right)
 				.setOnClickListener(mListener);
 		recordList = (XListView) mainView.findViewById(R.id.record_list);
+		recordList.setPullLoadEnable(false, false);
+		recordList.setPullRefreshEnable(false);
 		mAdapter = new RecordAdapter();
 		recordList.setAdapter(mAdapter);
 		// recordList.setXListViewListener(pullListener);
@@ -82,8 +84,8 @@ public class MainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Intent intent = new Intent();
-				intent.putExtra("tag", 1);
-				intent.putExtra("data", dataList.get(position-1));
+				intent.putExtra("isNew", false);
+				intent.putExtra("data", dataList.get(position - 1));
 				intent.setClass(getActivity(), EditActivity.class);
 				startActivity(intent);
 			}

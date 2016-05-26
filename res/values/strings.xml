@@ -6,21 +6,22 @@
     <string name="menu_record">add</string>
     <string name="menu_record_add">新增分类</string>
     <string name="title_record_add">新增记事</string>
-    <string name="menu_msg">消息中心</string>
-    <string name="menu_exit_login">切换账号</string>
     <string name="menu_set">设置</string>
     <string name="tip_building">暂未开放</string>
     <string name="save_sucess">保存成功</string>
     <string name="tip_input_type">输入分类名称</string>
     <string name="login_hint_pwd">输入密码</string>
+    <string name="title_login">密码验证</string>
     <string name="hint_title">标题</string>
-    <string name="setting_add_pwd">设置密码</string>
+    <string name="title_set_pwd">设置密码</string>
+    <string name="setting_manager_type">分类管理</string>
     <string name="setting_add_pwd_sucess">设置成功</string>
     <string name="setting_add_pwd_fail">两次密码不一致</string>
     <string name="key_save">保&#160;&#160;存</string>
     <string name="key_login">进&#160;&#160;入</string>
     <string name="key_delete">删&#160;&#160;除</string>
     <string name="tip_delete">确认删除？</string>
+    <string name="tip_delete_sucess">删除成功</string>
     <!--  -->
     <string name="weather_fail">获取天气失败</string>
     <!--  -->

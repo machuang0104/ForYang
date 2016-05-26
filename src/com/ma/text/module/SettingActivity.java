@@ -1,9 +1,9 @@
 package com.ma.text.module;
 
 import com.ma.text.R;
-import com.ma.text.anno.view.InjectLayout;
-import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.annoview.InjectLayout;
+import com.ma.text.compoment.annoview.InjectView;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,6 +22,7 @@ public class SettingActivity extends BaseActivity {
 
 	@Override
 	protected void afterOnCreate() {
+		updateTitle(R.string.menu_set,true);
 		set_pwd.setOnClickListener(mListener);
 	}
 

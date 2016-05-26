@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@android:color/black"
+            android:visibility="gone"
             android:textSize="@dimen/size_nomal" />
 
         <TextView

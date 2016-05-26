@@ -13,7 +13,19 @@
         android:drawableRight="@drawable/menu_arrow_right"
         android:gravity="left|center_vertical"
         android:padding="@dimen/space_normal"
-        android:text="@string/setting_add_pwd"
+        android:text="@string/title_set_pwd"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/size_nomal" />
+    <TextView
+        android:id="@+id/set_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_larger"
+        android:background="@drawable/selector_white_gray"
+        android:drawableRight="@drawable/menu_arrow_right"
+        android:gravity="left|center_vertical"
+        android:padding="@dimen/space_normal"
+        android:text="@string/setting_manager_type"
         android:textColor="@android:color/black"
         android:textSize="@dimen/size_nomal" />
 

@@ -1,9 +1,9 @@
 package com.ma.text.module;
 
 import com.ma.text.R;
-import com.ma.text.anno.view.InjectLayout;
-import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.annoview.InjectLayout;
+import com.ma.text.compoment.annoview.InjectView;
 import com.ma.text.compoment.cache.UserCache;
 import com.ma.text.tools.tip.ToastUtil;
 
@@ -25,6 +25,7 @@ public class SetPwdActivity extends BaseActivity {
 
 	@Override
 	protected void afterOnCreate() {
+		updateTitle(R.string.title_set_pwd, true);
 		etPwd2.setVisibility(View.VISIBLE);
 		btn_login.setText(R.string.key_save);
 		btn_login.setOnClickListener(mListener);

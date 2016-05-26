@@ -15,7 +15,7 @@
         android:paddingLeft="@dimen/space_normal"
         android:paddingRight="@dimen/space_normal"
         android:singleLine="false"
-        android:textSize="@dimen/size_nomal" >
+        android:textSize="@dimen/size_title" >
     </EditText>
 
     <EditText

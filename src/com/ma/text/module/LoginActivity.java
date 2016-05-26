@@ -7,9 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ma.text.R;
-import com.ma.text.anno.view.InjectLayout;
-import com.ma.text.anno.view.InjectView;
 import com.ma.text.base.BaseActivity;
+import com.ma.text.compoment.annoview.InjectLayout;
+import com.ma.text.compoment.annoview.InjectView;
 import com.ma.text.compoment.cache.UserCache;
 import com.ma.text.tools.tip.ToastUtil;
 
@@ -31,6 +31,8 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	protected void afterOnCreate() {
+		findViewById(R.id.title_left).setVisibility(View.GONE);
+		updateTitle(R.string.title_login, false);
 		btn_login.setOnClickListener(mListener);
 	}
 

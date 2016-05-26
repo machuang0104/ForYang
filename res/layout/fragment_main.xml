@@ -52,28 +52,15 @@
             android:textSize="@dimen/size_nomal" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/fragment_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_larger"
-        android:layout_marginRight="@dimen/space_larger"
-        android:layout_marginTop="@dimen/space_normal"
-        android:background="@drawable/half_corner_top_blue"
-        android:gravity="center"
-        android:padding="@dimen/space_small"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/size_nomal"
-        android:visibility="invisible" />
-
     <com.ma.text.widget.listview.XListView
         android:id="@+id/record_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/space_larger"
         android:layout_marginRight="@dimen/space_larger"
+        android:layout_marginTop="@dimen/space_normal"
         android:divider="@color/common_bg"
+        android:listSelector="@android:color/transparent"
         android:dividerHeight="@dimen/dimen_divider"
         android:scrollbars="none" />
 

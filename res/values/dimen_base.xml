@@ -13,6 +13,7 @@
     <dimen name="dimen_line_shape">0.5dp</dimen>
     <dimen name="dimen_divider">6dp</dimen>
     <dimen name="dimen_corner">6dp</dimen>
+    <dimen name="dimen_corner_item">22dp</dimen>
     <dimen name="dimen_map_icon">@dimen/dimen_30</dimen>
     <dimen name="dimen_corner_btn">5dp</dimen>
     <dimen name="dimen_progress_circle">40dp</dimen>
