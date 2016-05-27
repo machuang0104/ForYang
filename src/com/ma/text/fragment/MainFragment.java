@@ -6,6 +6,7 @@ import java.util.Date;
 
 import com.ma.text.R;
 import com.ma.text.adapter.ViewHolders;
+import com.ma.text.base.BaseFragment;
 import com.ma.text.client.db.manager.ContentManager;
 import com.ma.text.client.db.manager.TypeManager;
 import com.ma.text.common.K;

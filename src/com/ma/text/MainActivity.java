@@ -1,4 +1,4 @@
-package com.ma.text.module;
+package com.ma.text;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,6 +34,7 @@ import com.ma.text.base.BaseActivity;
 import com.ma.text.client.db.manager.TypeManager;
 import com.ma.text.client.http.action.Task;
 import com.ma.text.fragment.MainFragment;
+import com.ma.text.module.SettingActivity;
 import com.ma.text.module.weather.vo.WeatherDataVo;
 import com.ma.text.module.weather.vo.WeatherForecastVo;
 import com.ma.text.module.weather.vo.WeatherStatusVo;

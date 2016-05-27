@@ -3,7 +3,7 @@ package com.ma.text.widget.cache;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
-import com.ma.text.app.App;
+import com.ma.text.App;
 import com.ma.text.common.K;
 
 /**

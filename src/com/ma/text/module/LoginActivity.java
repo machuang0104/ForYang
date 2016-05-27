@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ma.text.MainActivity;
 import com.ma.text.R;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.tools.tip.ToastUtil;

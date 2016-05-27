@@ -24,7 +24,7 @@ import java.util.Date;
 
 import android.annotation.SuppressLint;
 
-import com.ma.text.app.App;
+import com.ma.text.App;
 import com.ma.text.common.Config;
 import com.ma.text.tools.check.AndroidVersionCheckUtils;
 import com.ma.text.widget.cache.ExternalOverFroyoUtils;

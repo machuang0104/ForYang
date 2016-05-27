@@ -5,7 +5,7 @@ import java.util.List;
 
 import android.util.Log;
 
-import com.ma.text.app.App;
+import com.ma.text.App;
 import com.ma.text.vo.db.TestVo;
 import com.ma.text.widget.db.SQLiteDBManager;
 import com.ma.text.widget.db.exception.DBNotOpenException;

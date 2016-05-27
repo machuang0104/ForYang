@@ -13,8 +13,8 @@ import android.content.res.Resources.NotFoundException;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
+import com.ma.text.App;
 import com.ma.text.R;
-import com.ma.text.app.App;
 
 /**
  * ClassName:StrUtil <br/>

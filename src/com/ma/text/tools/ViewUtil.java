@@ -16,8 +16,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.ma.text.App;
 import com.ma.text.R;
-import com.ma.text.app.App;
 
 /**
  * @Description: view工具类

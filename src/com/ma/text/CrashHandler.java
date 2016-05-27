@@ -1,4 +1,4 @@
-package com.ma.text.app;
+package com.ma.text;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ma.text.module.MainActivity;
 import com.ma.text.tools.LogUtil;
 
 import android.app.AlarmManager;

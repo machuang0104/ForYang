@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ma.text.App;
 import com.ma.text.R;
-import com.ma.text.app.App;
 /**
  * Toast工具
  * 

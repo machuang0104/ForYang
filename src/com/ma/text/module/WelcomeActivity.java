@@ -7,6 +7,7 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
 import com.amap.api.location.AMapLocationListener;
+import com.ma.text.MainActivity;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.client.db.manager.TypeManager;
 import com.ma.text.test.TestActivity;

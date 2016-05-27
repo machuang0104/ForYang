@@ -1,4 +1,4 @@
-package com.ma.text.app;
+package com.ma.text;
 
 import java.io.File;
 import java.io.FileOutputStream;

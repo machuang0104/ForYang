@@ -1,6 +1,6 @@
 package com.ma.text.tools;
 
-import com.ma.text.app.App;
+import com.ma.text.App;
 
 import android.util.DisplayMetrics;
 
