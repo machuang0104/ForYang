@@ -1,26 +1,23 @@
 package com.ma.text.base;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources.NotFoundException;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-
 import com.ma.text.R;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
-import com.ma.text.tools.StrUtil;
 import com.ma.text.tools.ViewUtil;
 import com.ma.text.widget.annoview.Injector;
 import com.ma.text.widget.swipeback.ActivityHelper;
 import com.ma.text.widget.swipeback.ISwipeBack;
 import com.ma.text.widget.swipeback.SwipeBackLayout;
 import com.ma.text.widget.swipeback.Utils;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * 所有acticity需要继承的基类activity
@@ -78,22 +75,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 
 	protected abstract void afterOnCreate();
 
-	protected void updateTitle(int strResId, boolean isNeedSwipeBack) {
-		updateTitle(strResId);
-		setSwipeBackEnable(isNeedSwipeBack);
-	}
-
-	private void updateTitle(int strResId) {
-		try {
-			TextView title = (TextView) findViewById(R.id.title_tv);
-			if (title != null)
-				title.setText(strResId);
-		} catch (NotFoundException e) {
-			LogUtil.e("tag_activity", "update title failed : "
-					+ this.getClass().getSimpleName());
-		}
-	}
-
 	/**
 	 * addSwipeBack: 实现滑动返回，设置后需进行显示测试，activity主题需设置为trslucant
 	 */
@@ -123,16 +104,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 		LogUtil.i("tag_activity", "onDestroy-->"
 				+ this.getClass().getSimpleName());
 
-	}
-
-	/** * isStrEmpty: str空返回true，非空返回false */
-	protected boolean isStrEmpty(String str) {
-		return StrUtil.isEmpty(str);
-	}
-
-	public void onClickTitle(View v) {
-		if (v.getId() == R.id.title_left)
-			finish();
 	}
 
 	protected void changeBackGround(boolean dismiss) {

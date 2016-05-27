@@ -12,18 +12,48 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:contentDescription="@null"
-        android:onClick="onClickTitle" />
+        android:onClick="onClickTitleLeft" />
 
     <TextView
         android:id="@+id/title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:gravity="center_vertical|center_horizontal"
         android:singleLine="true"
         android:text="@string/app_name"
+        android:visibility="invisible"
         android:textColor="@android:color/white"
         android:textSize="@dimen/size_title" />
+
+    <TextView
+        android:id="@+id/title_right_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:gravity="center_vertical"
+        android:background="@drawable/selector_gray"
+        android:paddingRight="@dimen/space_normal"
+        android:text="@string/title_record_add"
+        android:paddingLeft="@dimen/space_normal"
+        android:textColor="@android:color/white"
+        android:onClick="onClickTitleStr"
+        android:clickable="true"
+        android:textSize="@dimen/size_nomal"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/title_right_img"
+        style="@style/imageview_back"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@null"
+        android:onClick="onClickTitleImg"
+        android:clickable="true"
+        android:paddingRight="@dimen/space_normal"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -52,6 +52,9 @@ public class K {
 
 	public static final class intent {
 		public static final String ADD_NEW = "add_new_record";
+		public static final String TYPE_ID = "type_id";
+		public static final String Detail_Data = "detail_data";
+		public static final String Need_Refresh = "need_refresh";
 
 	}
 	public static final class TAG {

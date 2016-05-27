@@ -1,15 +1,10 @@
-package com.ma.text.module;
+package com.ma.text;
 
 import java.util.ArrayList;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
-import com.amap.api.location.AMapLocationListener;
-import com.ma.text.MainActivity;
-import com.ma.text.base.BaseActivity;
+import com.ma.text.base.AbsActivity;
 import com.ma.text.client.db.manager.TypeManager;
+import com.ma.text.module.LoginActivity;
 import com.ma.text.test.TestActivity;
 import com.ma.text.vo.db.TypeVo;
 import com.ma.text.widget.cache.UserCache;
@@ -17,7 +12,6 @@ import com.ma.text.widget.cache.UserCache;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -25,7 +19,7 @@ import android.widget.ImageView.ScaleType;
 /**
  * 延时广告显示页面
  */
-public class WelcomeActivity extends BaseActivity {
+public class WelcomeActivity extends AbsActivity {
 
 	ImageView img_homeAD;
 

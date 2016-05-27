@@ -1,6 +1,7 @@
-package com.ma.text.module;
+package com.ma.text.module.set;
 
 import com.ma.text.R;
+import com.ma.text.base.AbsActivity;
 import com.ma.text.base.BaseActivity;
 import com.ma.text.widget.annoview.InjectLayout;
 import com.ma.text.widget.annoview.InjectView;
@@ -15,7 +16,7 @@ import android.widget.TextView;
  * 
  */
 @InjectLayout(id = R.layout.activity_setting)
-public class SettingActivity extends BaseActivity {
+public class SettingActivity extends AbsActivity {
 
 	@InjectView(id = R.id.set_pwd)
 	public TextView set_pwd;

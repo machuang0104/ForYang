@@ -51,7 +51,7 @@
         <service android:name="com.amap.api.location.APSService" />
         <!-- 高德end -->
         <activity
-            android:name="com.ma.text.module.WelcomeActivity"
+            android:name="com.ma.text.WelcomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
@@ -62,27 +62,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ma.text.MainActivity"
+            android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ma.text.module.LoginActivity"
+            android:name=".module.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.ma.text.module.EditActivity"
+            android:name=".module.edit.EditActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.ma.text.module.SetPwdActivity"
+            android:name=".module.edit.DetailActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.ma.text.module.SettingActivity"
+            android:name=".module.set.SetPwdActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".module.set.SettingActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name="com.ma.text.test.TestActivity"
+            android:name=".test.TestActivity"
             android:screenOrientation="portrait" />
     </application>
 

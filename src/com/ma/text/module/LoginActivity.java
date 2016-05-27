@@ -1,18 +1,19 @@
 package com.ma.text.module;
 
+import com.ma.text.MainActivity;
+import com.ma.text.R;
+import com.ma.text.base.AbsActivity;
+import com.ma.text.tools.tip.ToastUtil;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.cache.UserCache;
+
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.ma.text.MainActivity;
-import com.ma.text.R;
-import com.ma.text.base.BaseActivity;
-import com.ma.text.tools.tip.ToastUtil;
-import com.ma.text.widget.annoview.InjectLayout;
-import com.ma.text.widget.annoview.InjectView;
-import com.ma.text.widget.cache.UserCache;
 
 /**
  * Description: Login Page
@@ -20,7 +21,7 @@ import com.ma.text.widget.cache.UserCache;
  * 
  */
 @InjectLayout(id = R.layout.activity_login)
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends AbsActivity {
 
 	@InjectView(id = R.id.etLoginAccount)
 	public EditText etAccount;
@@ -45,7 +46,7 @@ public class LoginActivity extends BaseActivity {
 			case R.id.btn_login:
 				accountStr = etAccount.getText().toString().trim();
 
-				if (isStrEmpty(accountStr)) {
+				if (TextUtils.isEmpty(accountStr)) {
 					ToastUtil.show(R.string.login_tip_pwd_null);
 				} else
 					doLogin(accountStr);

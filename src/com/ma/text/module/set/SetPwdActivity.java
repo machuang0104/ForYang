@@ -1,7 +1,7 @@
-package com.ma.text.module;
+package com.ma.text.module.set;
 
 import com.ma.text.R;
-import com.ma.text.base.BaseActivity;
+import com.ma.text.base.AbsActivity;
 import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.widget.annoview.InjectLayout;
 import com.ma.text.widget.annoview.InjectView;
@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 @InjectLayout(id = R.layout.activity_login)
-public class SetPwdActivity extends BaseActivity {
+public class SetPwdActivity extends AbsActivity {
 
 	@InjectView(id = R.id.etLoginAccount)
 	public EditText etPwd1;

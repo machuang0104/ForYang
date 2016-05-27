@@ -10,7 +10,8 @@ import com.ma.text.base.BaseFragment;
 import com.ma.text.client.db.manager.ContentManager;
 import com.ma.text.client.db.manager.TypeManager;
 import com.ma.text.common.K;
-import com.ma.text.module.EditActivity;
+import com.ma.text.module.edit.DetailActivity;
+import com.ma.text.module.edit.EditActivity;
 import com.ma.text.vo.db.ContentVo;
 import com.ma.text.vo.db.TypeVo;
 import com.ma.text.widget.cache.SharedUtil;
@@ -47,8 +48,7 @@ public class MainFragment extends BaseFragment {
 	RecordAdapter mAdapter;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		mainView = inflater.inflate(R.layout.fragment_main, container, false);
 		init();
 		return mainView;
@@ -64,8 +64,7 @@ public class MainFragment extends BaseFragment {
 
 	private void refreshList() {
 		dataList.clear();
-		ArrayList<ContentVo> temp = ContentManager.getInstance().findByTypeId(
-				typeId);
+		ArrayList<ContentVo> temp = ContentManager.getInstance().findByTypeId(typeId);
 		dataList.addAll(temp);
 		mAdapter.notifyDataSetChanged();
 	}
@@ -73,8 +72,7 @@ public class MainFragment extends BaseFragment {
 	private void init() {
 		mainView.findViewById(R.id.img_menu).setOnClickListener(mListener);
 		mainTitle = (TextView) mainView.findViewById(R.id.main_title);
-		mainView.findViewById(R.id.img_menu_right)
-				.setOnClickListener(mListener);
+		mainView.findViewById(R.id.img_menu_right).setOnClickListener(mListener);
 		recordList = (XListView) mainView.findViewById(R.id.record_list);
 		recordList.setPullLoadEnable(false, false);
 		recordList.setPullRefreshEnable(false);
@@ -83,12 +81,10 @@ public class MainFragment extends BaseFragment {
 		// recordList.setXListViewListener(pullListener);
 		recordList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent intent = new Intent();
-				intent.putExtra(K.intent.ADD_NEW, false);
-				intent.putExtra("data", dataList.get(position - 1));
-				intent.setClass(getActivity(), EditActivity.class);
+				intent.putExtra(K.intent.Detail_Data, dataList.get(position - 1));
+				intent.setClass(getActivity(), DetailActivity.class);
 				startActivity(intent);
 			}
 		});
@@ -155,7 +151,7 @@ public class MainFragment extends BaseFragment {
 				break;
 			case R.id.img_menu_right: {
 				Intent intent = new Intent();
-				intent.putExtra("typeid", typeId);
+				intent.putExtra(K.intent.TYPE_ID, typeId);
 				intent.setClass(getActivity(), EditActivity.class);
 				startActivity(intent);
 				break;
@@ -186,8 +182,7 @@ public class MainFragment extends BaseFragment {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			if (convertView == null)
-				convertView = LayoutInflater.from(getActivity()).inflate(
-						R.layout.item_list, parent, false);
+				convertView = LayoutInflater.from(getActivity()).inflate(R.layout.item_list, parent, false);
 			TextView title = ViewHolders.get(convertView, R.id.record_title);
 			TextView time = ViewHolders.get(convertView, R.id.record_time);
 			ContentVo r = dataList.get(position);
@@ -202,18 +197,12 @@ public class MainFragment extends BaseFragment {
 		return format.format(new Date(time));
 	}
 
-	boolean isFirst = true;
-
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (isFirst) {
-			isFirst = false;
-		} else {
-			if (SharedUtil.getInt("have") == -2) {
-				refreshList();
-				SharedUtil.clear("have");
-			}
+		if (SharedUtil.getBoolean(K.intent.Need_Refresh)) {
+			refreshList();
+			SharedUtil.clear(K.intent.Need_Refresh);
 		}
 
 	}

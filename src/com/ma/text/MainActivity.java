@@ -5,6 +5,33 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
+import com.amap.api.location.AMapLocationListener;
+import com.lidroid.xutils.exception.HttpException;
+import com.ma.text.adapter.ViewHolders;
+import com.ma.text.base.AbsActivity;
+import com.ma.text.client.db.manager.TypeManager;
+import com.ma.text.client.http.action.Task;
+import com.ma.text.fragment.MainFragment;
+import com.ma.text.module.set.SettingActivity;
+import com.ma.text.module.weather.vo.WeatherDataVo;
+import com.ma.text.module.weather.vo.WeatherForecastVo;
+import com.ma.text.module.weather.vo.WeatherStatusVo;
+import com.ma.text.tools.tip.ToastUtil;
+import com.ma.text.vo.db.TypeVo;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.cache.UserCache;
+import com.ma.text.widget.dialoginput.DialogInputClient;
+import com.ma.text.widget.dialoginput.InputListener;
+import com.ma.text.widget.http.MCallBack;
+import com.ma.text.widget.http.Response;
+import com.ma.text.widget.menu.SlidingMenu;
+import com.ma.text.widget.menu.SlidingMenu.OpenStatusListener;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,36 +49,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
-import com.amap.api.location.AMapLocationListener;
-import com.lidroid.xutils.exception.HttpException;
-import com.ma.text.R;
-import com.ma.text.adapter.ViewHolders;
-import com.ma.text.base.BaseActivity;
-import com.ma.text.client.db.manager.TypeManager;
-import com.ma.text.client.http.action.Task;
-import com.ma.text.fragment.MainFragment;
-import com.ma.text.module.SettingActivity;
-import com.ma.text.module.weather.vo.WeatherDataVo;
-import com.ma.text.module.weather.vo.WeatherForecastVo;
-import com.ma.text.module.weather.vo.WeatherStatusVo;
-import com.ma.text.tools.tip.ToastUtil;
-import com.ma.text.vo.db.TypeVo;
-import com.ma.text.widget.annoview.InjectLayout;
-import com.ma.text.widget.annoview.InjectView;
-import com.ma.text.widget.cache.UserCache;
-import com.ma.text.widget.dialoginput.DialogInputClient;
-import com.ma.text.widget.dialoginput.InputListener;
-import com.ma.text.widget.http.MCallBack;
-import com.ma.text.widget.http.Response;
-import com.ma.text.widget.menu.SlidingMenu;
-import com.ma.text.widget.menu.SlidingMenu.OpenStatusListener;
-
 @InjectLayout(id = R.layout.activity_main)
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AbsActivity {
 	@InjectView(id = R.id.sliding_menu)
 	private SlidingMenu mMenu;
 	@InjectView(id = R.id.typeList)
