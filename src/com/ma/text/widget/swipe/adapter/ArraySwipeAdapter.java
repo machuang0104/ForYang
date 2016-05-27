@@ -2,16 +2,16 @@ package com.ma.text.widget.swipe.adapter;
 
 import java.util.List;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
 import com.ma.text.widget.swipe.Mode;
 import com.ma.text.widget.swipe.SwipeLayout;
 import com.ma.text.widget.swipe.implement.SwipeItemMangerImpl;
 import com.ma.text.widget.swipe.interfaces.SwipeAdapterInterface;
 import com.ma.text.widget.swipe.interfaces.SwipeItemMangerInterface;
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 public abstract class ArraySwipeAdapter<T> extends ArrayAdapter implements SwipeItemMangerInterface,SwipeAdapterInterface {
 

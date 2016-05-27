@@ -2,16 +2,16 @@ package com.ma.text.widget.swipe.adapter;
 
 import java.util.List;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-
 import com.ma.text.widget.swipe.DeleteListener;
 import com.ma.text.widget.swipe.Mode;
 import com.ma.text.widget.swipe.SwipeLayout;
 import com.ma.text.widget.swipe.implement.SwipeItemMangerImpl;
 import com.ma.text.widget.swipe.interfaces.SwipeAdapterInterface;
 import com.ma.text.widget.swipe.interfaces.SwipeItemMangerInterface;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 public abstract class BaseSwipeAdapter extends BaseAdapter implements
 		SwipeItemMangerInterface, SwipeAdapterInterface {

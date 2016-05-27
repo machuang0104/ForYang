@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import android.view.View;
-import android.widget.BaseAdapter;
-
 import com.ma.text.widget.swipe.Mode;
 import com.ma.text.widget.swipe.SimpleSwipeListener;
 import com.ma.text.widget.swipe.SwipeLayout;
 import com.ma.text.widget.swipe.interfaces.SwipeAdapterInterface;
 import com.ma.text.widget.swipe.interfaces.SwipeItemMangerInterface;
+
+import android.view.View;
+import android.widget.BaseAdapter;
 
 /**
  * SwipeItemMangerImpl is a helper class to help all the adapters to maintain

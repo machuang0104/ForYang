@@ -2,17 +2,17 @@ package com.ma.text.widget.swipe.adapter;
 
 import java.util.List;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.support.v4.widget.SimpleCursorAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.ma.text.widget.swipe.Mode;
 import com.ma.text.widget.swipe.SwipeLayout;
 import com.ma.text.widget.swipe.implement.SwipeItemMangerImpl;
 import com.ma.text.widget.swipe.interfaces.SwipeAdapterInterface;
 import com.ma.text.widget.swipe.interfaces.SwipeItemMangerInterface;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.View;
+import android.view.ViewGroup;
 
 public abstract class SimpleCursorSwipeAdapter extends SimpleCursorAdapter implements SwipeItemMangerInterface, SwipeAdapterInterface {
 

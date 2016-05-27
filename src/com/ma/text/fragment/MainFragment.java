@@ -6,15 +6,16 @@ import java.util.Date;
 
 import com.ma.text.R;
 import com.ma.text.adapter.ViewHolders;
-import com.ma.text.compoment.cache.SharedUtil;
-import com.ma.text.db.client.manager.ContentManager;
-import com.ma.text.db.client.manager.TypeManager;
+import com.ma.text.client.db.manager.ContentManager;
+import com.ma.text.client.db.manager.TypeManager;
+import com.ma.text.common.K;
 import com.ma.text.module.EditActivity;
-import com.ma.text.view.menu.SlidingMenu;
 import com.ma.text.vo.db.ContentVo;
 import com.ma.text.vo.db.TypeVo;
+import com.ma.text.widget.cache.SharedUtil;
 import com.ma.text.widget.listview.XListView;
 import com.ma.text.widget.listview.XListView.IXListViewListener;
+import com.ma.text.widget.menu.SlidingMenu;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -84,7 +85,7 @@ public class MainFragment extends BaseFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				Intent intent = new Intent();
-				intent.putExtra("isNew", false);
+				intent.putExtra(K.intent.ADD_NEW, false);
 				intent.putExtra("data", dataList.get(position - 1));
 				intent.setClass(getActivity(), EditActivity.class);
 				startActivity(intent);

@@ -11,12 +11,12 @@ import java.util.Date;
 import java.util.Locale;
 
 import com.ma.text.common.K;
-import com.ma.text.compoment.cache.UserCache;
-import com.ma.text.db.SQLiteDatabasePool;
-import com.ma.text.httpclient.http.MHandler;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
 import com.ma.text.tools.NetUtils;
+import com.ma.text.widget.cache.UserCache;
+import com.ma.text.widget.db.SQLiteDatabasePool;
+import com.ma.text.widget.http.MHandler;
 
 import android.app.Application;
 import android.content.Intent;

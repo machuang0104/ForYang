@@ -31,23 +31,23 @@ import com.lidroid.xutils.exception.HttpException;
 import com.ma.text.R;
 import com.ma.text.adapter.ViewHolders;
 import com.ma.text.base.BaseActivity;
-import com.ma.text.compoment.annoview.InjectLayout;
-import com.ma.text.compoment.annoview.InjectView;
-import com.ma.text.compoment.cache.UserCache;
-import com.ma.text.compoment.dialoginput.DialogInputClient;
-import com.ma.text.compoment.dialoginput.InputListener;
-import com.ma.text.db.client.manager.TypeManager;
+import com.ma.text.client.db.manager.TypeManager;
+import com.ma.text.client.http.action.Task;
 import com.ma.text.fragment.MainFragment;
-import com.ma.text.httpclient.action.Task;
-import com.ma.text.httpclient.http.MCallBack;
-import com.ma.text.httpclient.http.Response;
 import com.ma.text.module.weather.vo.WeatherDataVo;
 import com.ma.text.module.weather.vo.WeatherForecastVo;
 import com.ma.text.module.weather.vo.WeatherStatusVo;
 import com.ma.text.tools.tip.ToastUtil;
-import com.ma.text.view.menu.SlidingMenu;
-import com.ma.text.view.menu.SlidingMenu.OpenStatusListener;
 import com.ma.text.vo.db.TypeVo;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.cache.UserCache;
+import com.ma.text.widget.dialoginput.DialogInputClient;
+import com.ma.text.widget.dialoginput.InputListener;
+import com.ma.text.widget.http.MCallBack;
+import com.ma.text.widget.http.Response;
+import com.ma.text.widget.menu.SlidingMenu;
+import com.ma.text.widget.menu.SlidingMenu.OpenStatusListener;
 
 @InjectLayout(id = R.layout.activity_main)
 public class MainActivity extends BaseActivity {

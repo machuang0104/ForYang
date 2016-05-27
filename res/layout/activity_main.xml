@@ -1,4 +1,4 @@
-<com.ma.text.view.menu.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ma.text.widget.menu.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res/com.ma.text"
     android:id="@+id/sliding_menu"
     android:layout_width="wrap_content"
@@ -22,4 +22,4 @@
         </LinearLayout>
     </LinearLayout>
 
-</com.ma.text.view.menu.SlidingMenu>
+</com.ma.text.widget.menu.SlidingMenu>

@@ -12,15 +12,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.ma.text.R;
-import com.ma.text.compoment.annoview.Injector;
 import com.ma.text.tools.ExitApplication;
 import com.ma.text.tools.LogUtil;
 import com.ma.text.tools.StrUtil;
 import com.ma.text.tools.ViewUtil;
-import com.ma.text.view.swipeback.ActivityHelper;
-import com.ma.text.view.swipeback.ISwipeBack;
-import com.ma.text.view.swipeback.SwipeBackLayout;
-import com.ma.text.view.swipeback.Utils;
+import com.ma.text.widget.annoview.Injector;
+import com.ma.text.widget.swipeback.ActivityHelper;
+import com.ma.text.widget.swipeback.ISwipeBack;
+import com.ma.text.widget.swipeback.SwipeBackLayout;
+import com.ma.text.widget.swipeback.Utils;
 
 /**
  * 所有acticity需要继承的基类activity

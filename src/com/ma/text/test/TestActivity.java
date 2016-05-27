@@ -7,12 +7,12 @@ import android.widget.TextView;
 import com.lidroid.xutils.exception.HttpException;
 import com.ma.text.R;
 import com.ma.text.base.BaseActivity;
-import com.ma.text.compoment.annoview.InjectLayout;
-import com.ma.text.compoment.annoview.InjectView;
-import com.ma.text.httpclient.action.Task;
-import com.ma.text.httpclient.http.MCallBack;
-import com.ma.text.httpclient.http.Response;
+import com.ma.text.client.http.action.Task;
 import com.ma.text.module.weather.vo.WeatherStatusVo;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.http.MCallBack;
+import com.ma.text.widget.http.Response;
 
 @InjectLayout(id = R.layout.activity_test)
 public class TestActivity extends BaseActivity {

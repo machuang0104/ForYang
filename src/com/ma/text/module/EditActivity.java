@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 import com.ma.text.R;
 import com.ma.text.base.BaseActivity;
-import com.ma.text.compoment.annoview.InjectLayout;
-import com.ma.text.compoment.annoview.InjectView;
-import com.ma.text.compoment.cache.SharedUtil;
-import com.ma.text.compoment.dialog.DialogClient;
-import com.ma.text.db.client.manager.ContentManager;
+import com.ma.text.client.db.manager.ContentManager;
+import com.ma.text.common.K;
 import com.ma.text.tools.tip.ToastUtil;
 import com.ma.text.vo.db.ContentVo;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.cache.SharedUtil;
+import com.ma.text.widget.dialog.DialogClient;
 
 @InjectLayout(id = R.layout.activity_edit)
 public class EditActivity extends BaseActivity {
@@ -32,7 +33,7 @@ public class EditActivity extends BaseActivity {
 	@Override
 	protected void afterOnCreate() {
 		setSwipeBackEnable(true);
-		boolean isNew = getIntent().getBooleanExtra("isNew", true);
+		boolean isNew = getIntent().getBooleanExtra(K.intent.ADD_NEW, true);
 		if (isNew) {
 			initAdd();
 		} else {

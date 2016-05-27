@@ -8,10 +8,10 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationClientOption.AMapLocationMode;
 import com.amap.api.location.AMapLocationListener;
 import com.ma.text.base.BaseActivity;
-import com.ma.text.compoment.cache.UserCache;
-import com.ma.text.db.client.manager.TypeManager;
+import com.ma.text.client.db.manager.TypeManager;
 import com.ma.text.test.TestActivity;
 import com.ma.text.vo.db.TypeVo;
+import com.ma.text.widget.cache.UserCache;
 
 import android.content.Intent;
 import android.os.AsyncTask;

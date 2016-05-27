@@ -8,10 +8,10 @@ import android.widget.TextView;
 
 import com.ma.text.R;
 import com.ma.text.base.BaseActivity;
-import com.ma.text.compoment.annoview.InjectLayout;
-import com.ma.text.compoment.annoview.InjectView;
-import com.ma.text.compoment.cache.UserCache;
 import com.ma.text.tools.tip.ToastUtil;
+import com.ma.text.widget.annoview.InjectLayout;
+import com.ma.text.widget.annoview.InjectView;
+import com.ma.text.widget.cache.UserCache;
 
 /**
  * Description: Login Page

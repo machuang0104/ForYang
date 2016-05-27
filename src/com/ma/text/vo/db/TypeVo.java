@@ -1,9 +1,9 @@
 package com.ma.text.vo.db;
 
 import com.ma.text.base.BaseEntity;
-import com.ma.text.db.annotation.Column;
-import com.ma.text.db.annotation.PrimaryKey;
-import com.ma.text.db.annotation.TableName;
+import com.ma.text.widget.db.annotation.Column;
+import com.ma.text.widget.db.annotation.PrimaryKey;
+import com.ma.text.widget.db.annotation.TableName;
 
 @SuppressWarnings("serial")
 @TableName(name = "table_type")
